@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/django,virtualenv,vscode
-# Edit at https://www.toptal.com/developers/gitignore?templates=django,virtualenv,vscode
+# Created by https://www.toptal.com/developers/gitignore/api/venv,django,virtualenv,python,vscode
+# Edit at https://www.toptal.com/developers/gitignore?templates=venv,django,virtualenv,python,vscode
 
 ### Django ###
 *.log
@@ -150,7 +150,68 @@ dmypy.json
 # profiling data
 .prof
 
-### VirtualEnv ###
+### Python ###
+# Byte-compiled / optimized / DLL files
+
+# C extensions
+
+# Distribution / packaging
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+
+# Installer logs
+
+# Unit test / coverage reports
+
+# Translations
+
+# Django stuff:
+
+# Flask stuff:
+
+# Scrapy stuff:
+
+# Sphinx documentation
+
+# PyBuilder
+
+# Jupyter Notebook
+
+# IPython
+
+# pyenv
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+
+# Celery stuff
+
+# SageMath parsed files
+
+# Environments
+
+# Spyder project settings
+
+# Rope project settings
+
+# mkdocs documentation
+
+# mypy
+
+# Pyre type checker
+
+# pytype static type analyzer
+
+# profiling data
+
+### venv ###
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 [Bb]in
@@ -162,6 +223,10 @@ dmypy.json
 pyvenv.cfg
 pip-selfcheck.json
 
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+
 ### vscode ###
 .vscode/*
 !.vscode/settings.json
@@ -170,4 +235,8 @@ pip-selfcheck.json
 !.vscode/extensions.json
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/django,virtualenv,vscode
+# End of https://www.toptal.com/developers/gitignore/api/venv,django,virtualenv,python,vscode
+
+#virtualenv
+.jumbocashapi
+/jumbocashapi
