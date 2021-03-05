@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'jumbocashbackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd2enpki0al8jhh',
+        'USER': 'lshekmsekgcvym',
+        'PASSWORD':'b8408c6f6dab3804ca7f092ae5dc41f3b3042f7ba7735dd7d741b6f4b95c41f7',
+        'HOST':'ec2-54-164-241-193.compute-1.amazonaws.com',
+        'PORT':'5432'
     }
 }
 
