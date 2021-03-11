@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    #'rest_framework.auth_token',
+     #apps
+     'jumbocashapi',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +77,8 @@ WSGI_APPLICATION = 'jumbocashbackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# heroku-postgres
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -83,6 +89,19 @@ DATABASES = {
         'PORT':'5432'
     }
 }
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD':'suka207',
+        'HOST':'127.0.0.1',
+        'PORT':'5432'
+    }
+}
+
 
 
 # Password validation
@@ -122,3 +141,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'jumbocashapi.Retailer'
