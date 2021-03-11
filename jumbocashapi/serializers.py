@@ -32,4 +32,3 @@ class RetailerSerializer(serializers.ModelSerializer):
             address         = validated_data['address'],
             pincode         = validated_data['pincode'],
             password        = validated_data['password']
-        )
