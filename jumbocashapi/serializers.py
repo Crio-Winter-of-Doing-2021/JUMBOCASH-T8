@@ -34,4 +34,4 @@ class RetailerSerializer(serializers.ModelSerializer):
             password        = validated_data['password']
         )
 
-        return retailer
+        return retailer 
