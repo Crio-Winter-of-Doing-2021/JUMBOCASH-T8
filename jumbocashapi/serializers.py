@@ -35,3 +35,43 @@ class RetailerSerializer(serializers.ModelSerializer):
         )
 
         return retailer 
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    """Serializer for Customer """
+
+    class Meta:
+        model       = models.Customer
+        fields      = ['id', 'firstname', 'lastname', 'mobile_no', 'email_id', 'ret_id']
+
+
+class SupplierSerializer(serializers.ModelSerializer):
+    """Serializer for Supplier """
+
+    class Meta:
+        model       = models.Supplier
+        fields      = ['id', 'firstname', 'lastname', 'mobile_no', 'email_id', 'ret_id']
+
+
+class IncomeTransactionSerializer(serializers.ModelSerializer):
+    """Serializer for Customer """
+
+    class Meta:
+        model       = models.IncomeTransaction
+        fields      = ['trans_date_time', 'amount', 'note', 'description', \
+                       'payment_mode', 'payment_status', 'due_date', 'cust_id']  
+
+
+class ExpenseTransactionSerializer(serializers.ModelSerializer):
+    """Serializer for Customer """
+
+    class Meta:
+        model       = models.ExpenseTransaction
+        fields      = ['trans_date_time', 'amount', 'note', 'description', \
+                       'payment_mode', 'payment_status', 'due_date', 'sup_id']
+           
+    
+   
+ 
+       
+        

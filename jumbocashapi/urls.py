@@ -4,4 +4,12 @@ from . import views
 urlpatterns = [
     path('', views.RetailerListCreateView.as_view()),
     path('<int:pk>/', views.RetailerUpdateRetriveDeleteView.as_view()),
+    path('customers', views.CustomerListCreateView.as_view()),
+    path('customers/<int:pk>', views.CustomerUpdateRetriveDeleteView.as_view()),
+    path('suppliers', views.SupplierListCreateView.as_view()),
+    path('suppliers/<int:pk>', views.SupplierUpdateRetriveDeleteView.as_view()),
+    path('incometransactions', views.IncomeTransactionListCreateView.as_view()),
+    path('incometransactions/<int:pk>', views.IncomeTransactionUpdateRetriveDeleteView.as_view()),
+    path('expensetransactions', views.ExpenseTransactionListCreateView.as_view()),
+    path('expensetransactions/<int:pk>/', views.ExpenseTransactionUpdateRetriveDeleteView.as_view()),
 ] 
