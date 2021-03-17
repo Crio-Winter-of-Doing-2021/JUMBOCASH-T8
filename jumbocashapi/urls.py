@@ -4,7 +4,8 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 
 urlpatterns = [
-    path('', views.RetailerListCreateView.as_view()),
+    path('', views.RetailerListView.as_view()),
+    path('register', views.RetailerCreateView.as_view()),
     path('<int:pk>/', views.RetailerUpdateRetriveDeleteView.as_view()),
     path('customers', views.CustomerListCreateView.as_view()),
     path('customers/<int:pk>', views.CustomerUpdateRetriveDeleteView.as_view()),
