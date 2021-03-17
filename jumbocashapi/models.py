@@ -3,6 +3,11 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+
 
 payment_mode_choices = (
     ('1', 'Cash'),
@@ -36,7 +41,7 @@ class RetailerManager(BaseUserManager):
         if not email:
             raise ValueError('User must have an email id')
         
-        #makes email to lowercase 
+        # makes email to lowercase 
         email = self.normalize_email(email)
         user = self.model(email=email, **kwargs)
         
@@ -141,3 +146,10 @@ class ExpenseTransaction(models.Model):
     def __str__(self):
         """Return string representation of expenseTransaction"""
         return self.note + "    "+ str(self.trans_date_time)
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    """Creates token when a new Retailer is created"""
+    if created:
+        Token.objects.create(user=instance)
