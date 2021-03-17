@@ -3,8 +3,6 @@ from . import views
 from rest_framework.authtoken.views import obtain_auth_token
 
 
-
-
 urlpatterns = [
     path('', views.RetailerListCreateView.as_view()),
     path('<int:pk>/', views.RetailerUpdateRetriveDeleteView.as_view()),
@@ -17,4 +15,6 @@ urlpatterns = [
     path('expensetransactions', views.ExpenseTransactionListCreateView.as_view()),
     path('expensetransactions/<int:pk>/', views.ExpenseTransactionUpdateRetriveDeleteView.as_view()),
 
-    path('login/', obtain_auth_token),
+    path('login/', obtain_auth_token)
+
+]
