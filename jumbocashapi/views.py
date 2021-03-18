@@ -4,13 +4,18 @@ from .models import Retailer, Customer, Supplier, IncomeTransaction, ExpenseTran
 from .serializers import (RetailerSerializer, CustomerSerializer,
 SupplierSerializer, IncomeTransactionSerializer,ExpenseTransactionSerializer)
 
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.authentication import TokenAuthentication
 
 
  
-class RetailerListCreateView(ListCreateAPIView):
-    """Handles List and Create of a Retailer object"""
+class RetailerListView(ListAPIView):
+    """Handles List of a Retailer object"""
+    queryset            = Retailer.objects.all()
+    serializer_class    = RetailerSerializer
+
+class RetailerCreateView(CreateAPIView):
+    """Handles Create of a Retailer object"""
     queryset            = Retailer.objects.all()
     serializer_class    = RetailerSerializer
 
