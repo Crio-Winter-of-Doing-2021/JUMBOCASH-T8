@@ -42,7 +42,7 @@ trans_type_choices = (
 class RetailerManager(BaseUserManager):
     """Manager for Retailer"""
 
-    def create_user(self, email, password, **kwargs):
+    def update_or_create_user(self, email, password, **kwargs):
         """Create a new retailer profile"""
         if not email:
             raise ValueError('User must have an email id')
@@ -66,6 +66,8 @@ class RetailerManager(BaseUserManager):
         user.save()
 
         return user
+    
+
 
 class Retailer(AbstractBaseUser, PermissionsMixin):
     """ Model for Retailer users """

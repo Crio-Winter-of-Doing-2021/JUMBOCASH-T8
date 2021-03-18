@@ -34,7 +34,16 @@ class RetailerSerializer(serializers.ModelSerializer):
             password        = validated_data['password']
         )
 
-        return retailer 
+        return retailer
+
+    def update(self, instance, validated_data):
+        """Handle updating retailer"""
+        print('user updated')
+        if 'password' in validated_data:
+            password = validated_data.pop('password')
+            instance.set_password(password)
+
+        return super().update(instance, validated_data) 
 
 
 class CustomerSerializer(serializers.ModelSerializer):
