@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jumbotail | Cash Flow Management App">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <title>Cash Flow Management App</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md nav-bg navbar-dark fixed-top">
+
+        <a href="https://jumbotail.com/" class="navbar-brand text-warning font-weight-bold"><img src="assets/img/JumbotailLogo.png" alt=""></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#collapsenavbar" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse text-center " id="collapsenavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white">Dashboard
+                        </a>
+                </li>
+                <li class="nav-item">
+                    <a href="form.html" class="nav-link text-white">Profile
+                        </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link text-white">Logout
+                        </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="bar bg-light">
+
+        <p class="heading">Cashflow</p>
+        <button class="btn btn-outline-danger my-2 my-sm-0 expense-btn" type="submit" data-target="#expenseModal" data-toggle="modal">- Expense</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 income-btn" type="submit" data-target="#incomeModal" data-toggle="modal">+ Income</button>
+
+    </div>
+
+    <!--Income Modal -->
+    <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="incomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title m-auto text-white font-weight-bold" id="incomeModalLabel">Income Transaction</h5>
+
+                </div>
+                <div class="modal-body">
+
+                    <!-- form -->
+                    <form id="income-form" method="post">
+
+                        <div class="form-row justify-content">
+                            <div class="form-group row">
+                                <label for="income-text-input" class="col-4 col-form-label">Title :</label>
+                                <div class="col-8 pl-4">
+                                    <input class="form-control" type="text" id="income-text-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="income-datetime-local-input" class="col-4 col-form-label pr-1">Date and time :</label>
+                                <div class="col-8 pl-1">
+                                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="income-datetime-local-input">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="income-date-input" class="col-4 col-form-label ">Due Date :</label>
+                                <div class="col-8 pl-4">
+                                    <input class="form-control" type="date" value="2011-08-19" id="income-date-input">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row ">
+                                <label for="income-number-input" class="col-4 col-form-label">Amount : </label>
+                                <div class="col-8">
+                                    <input class="form-control" type="number" value="42" id="income-number-input">
+                                </div>
+                            </div>
+
+                            <div class="form-group row ">
+                                <label for="income-number-input" class="form-label pr-0 col-2">Payment Mode: </label>
+                                <div class="col-4">
+                                    <select class="custom-select">
+                                        <option selected>Options</option>
+                                        <option value="1">Cash</option>
+                                        <option value="2">Card</option>
+                                        <option value="3">UPI</option>
+                                        <option value="4">Other Online Mode </option>
+                                    </select>
+                                </div>
+                                <label for="income-number-input" class="form-label pr-0 col-2">Payment Status: </label>
+                                <div class="col-4">
+                                    <select class="custom-select">
+                                        <option selected>Options</option>
+                                        <option value="1">Pending</option>
+                                        <option value="2">Received</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="income-Textarea" class="col-5 col-form-label">Description : </label>
+                                <div class="col-12"> <textarea class="form-control" id="income-Textarea" rows="3"></textarea></div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Expense Modal -->
+    <div class="modal fade" id="expenseModal" tabindex="-1" role="dialog" aria-labelledby="expenseLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title m-auto text-white font-weight-bold" id="expenseLabel">Expense Transaction</h5>
+
+                </div>
+                <div class="modal-body">
+
+                    <!-- form -->
+                    <form id="expense-form" method="post">
+
+                        <div class="form-row justify-content">
+                            <div class="form-group row">
+                                <label for="expense-text-input" class="col-4 col-form-label">Title :</label>
+                                <div class="col-8 pl-4">
+                                    <input class="form-control" type="text" id="expense-text-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="expense-datetime-local-input" class="col-4 col-form-label pr-1 ">Date and time :</label>
+                                <div class="col-8 pl-1">
+                                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="expense-datetime-local-input">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="expense-date-input" class="col-4 col-form-label ">Due Date :</label>
+                                <div class="col-8 pl-4">
+                                    <input class="form-control" type="date" value="2011-08-19" id="expense-date-input">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row ">
+                                <label for="expense-number-input" class="col-4 col-form-label">Amount : </label>
+                                <div class="col-8">
+                                    <input class="form-control" type="number" value="42" id="expense-number-input">
+                                </div>
+                            </div>
+
+                            <div class="form-group row ">
+                                <label for="expense-number-input" class="form-label pr-0 col-2">Payment Mode: </label>
+                                <div class="col-4">
+                                    <select class="custom-select">
+                                        <option selected>Options</option>
+                                        <option value="1">Cash</option>
+                                        <option value="2">Card</option>
+                                        <option value="3">UPI</option>
+                                        <option value="4">Other Online Mode </option>
+                                    </select>
+                                </div>
+                                <label for="expense-number-input" class="form-label pr-0 col-2">Payment Status: </label>
+                                <div class="col-4">
+                                    <select class="custom-select">
+                                        <option selected>Options</option>
+                                        <option value="1">Pending</option>
+                                        <option value="2">Paid</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="expense-Textarea" class="col-5 col-form-label">Description : </label>
+                                <div class="col-12"> <textarea class="form-control" id="expense-Textarea" rows="3"></textarea></div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>
