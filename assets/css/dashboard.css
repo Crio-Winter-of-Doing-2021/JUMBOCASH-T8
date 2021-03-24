@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body,
+input {
+    font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+nav img {
+    height: 3rem;
+}
+
+.nav-bg {
+    background-color: #47b475 !important;
+}
+
+.navbar-nav {
+    padding-right: 5rem !important;
+}
+
+.bar {
+    height: 10rem;
+}
+
+.heading {
+    margin-top: 5.5rem;
+    padding: 0.5rem;
+    padding-left: 4rem;
+    position: absolute;
+    font-size: 2rem;
+}
+
+.income-btn,
+.expense-btn {
+    margin-top: 6rem !important;
+    float: right;
+    margin-right: 5rem;
+}
