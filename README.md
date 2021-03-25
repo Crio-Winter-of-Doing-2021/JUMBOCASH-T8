@@ -29,6 +29,10 @@ Cash Flow Management App is an application that enables small business owners to
 - **Version Control**: Git and GitHub
 - **Database**: PostgreSQL
 - **Hosting**: Netlify
+## Links:
+
+- **Frontend**: [https://jumbocashflow-app-t8.netlify.app/](https://jumbocashflow-app-t8.netlify.app/)
+- **Backend**: [http://127.0.0.1:8000/jumbocashapi/](http://127.0.0.1:8000/jumbocashapi/login/)
 
 #### GitHub Repository Structure
 
