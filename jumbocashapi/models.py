@@ -72,12 +72,12 @@ class RetailerManager(BaseUserManager):
 class Retailer(AbstractBaseUser, PermissionsMixin):
     """ Model for Retailer users """
     email           = models.EmailField(max_length=255, unique=True)
-    mobile_no       = models.CharField(max_length=10, unique=True)
+    mobile_no       = models.CharField(max_length=10, unique=True, blank=True)
     firstname       = models.CharField(max_length=255)
-    lastname        = models.CharField(max_length=255)
-    business_name   = models.CharField(max_length=255)
-    address         = models.CharField(max_length=255)
-    pincode         = models.CharField(max_length=6)
+    lastname        = models.CharField(max_length=255, blank=True)
+    business_name   = models.CharField(max_length=255, blank=True)
+    address         = models.CharField(max_length=255, blank=True)
+    pincode         = models.CharField(max_length=6, blank=True)
 
     is_staff        = models.BooleanField(default=False) #sets django admin access to false
 
