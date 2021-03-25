@@ -6,7 +6,7 @@ SupplierSerializer, IncomeTransactionSerializer,ExpenseTransactionSerializer)
 
 from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.authentication import TokenAuthentication
-
+from rest_framework.permissions import AllowAny
 
  
 class RetailerListView(ListAPIView):
@@ -18,6 +18,7 @@ class RetailerCreateView(CreateAPIView):
     """Handles Create of a Retailer object"""
     queryset            = Retailer.objects.all()
     serializer_class    = RetailerSerializer
+    permission_classes = [AllowAny]
 
 
 class RetailerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
