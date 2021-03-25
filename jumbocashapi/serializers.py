@@ -24,14 +24,7 @@ class RetailerSerializer(serializers.ModelSerializer):
 
         # calls the create_user function from RetailerManager
         retailer = models.Retailer.objects.create_user(
-            email           = validated_data['email'],
-            mobile_no       = validated_data['mobile_no'],
-            firstname       = validated_data['firstname'],
-            lastname        = validated_data['lastname'],
-            business_name   = validated_data['business_name'],
-            address         = validated_data['address'],
-            pincode         = validated_data['pincode'],
-            password        = validated_data['password']
+            **validated_data
         )
 
         return retailer

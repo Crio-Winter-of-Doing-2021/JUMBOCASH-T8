@@ -42,7 +42,7 @@ trans_type_choices = (
 class RetailerManager(BaseUserManager):
     """Manager for Retailer"""
 
-    def update_or_create_user(self, email, password, **kwargs):
+    def create_user(self, email, password, **kwargs):
         """Create a new retailer profile"""
         if not email:
             raise ValueError('User must have an email id')
