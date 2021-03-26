@@ -13,6 +13,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from django.conf import settings
 
 
 payment_mode_choices = (
@@ -100,9 +101,9 @@ class Customer(models.Model):
     """Model for customer enity (cash inflow entity)"""
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255, blank=True)
-    mobile_no   = models.CharField(max_length=10, blank=True)
-    email_id    = models.EmailField(max_length=255, unique=True, blank=True)
-    ret_id      = models.ForeignKey(Retailer, on_delete=models.CASCADE)
+    mobile_no   = models.CharField(max_length=10, unique=True)
+    #email_id    = models.EmailField(max_length=255, unique=True, blank=True)
+    ret         = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     REQUIRED_FIELDS = ['firstname']
 
@@ -114,9 +115,9 @@ class Supplier(models.Model):
     """Model for customer enity (cash outflow entity)"""
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255, blank=True)
-    mobile_no   = models.CharField(max_length=10, blank=True)
-    email_id    = models.EmailField(max_length=255, unique=True, blank=True)
-    ret_id      = models.ForeignKey(Retailer, on_delete=models.CASCADE)
+    mobile_no   = models.CharField(max_length=10, unique=True)
+    #email_id    = models.EmailField(max_length=255, unique=True, blank=True)
+    ret         = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     REQUIRED_FIELDS = ['firstname']
 
@@ -133,7 +134,7 @@ class IncomeTransaction(models.Model):
     payment_mode     = models.CharField(max_length=50, choices=payment_mode_choices)
     payment_status   = models.CharField(max_length=50, choices=inc_payment_status_choices)
     due_date         = models.DateField(blank=True, null=True)
-    cust_id          = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    cust_id             = models.ForeignKey(Customer, on_delete=models.CASCADE)
  
 
     def __str__(self):
@@ -149,7 +150,7 @@ class ExpenseTransaction(models.Model):
     payment_mode     = models.CharField(max_length=50, choices=payment_mode_choices)
     payment_status   = models.CharField(max_length=50, choices=exp_payment_status_choices)
     due_date         = models.DateField(blank=True, null=True)
-    sup_id           = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    sup_id              = models.ForeignKey(Supplier, on_delete=models.CASCADE)
 
     def __str__(self):
         """Return string representation of expenseTransaction"""

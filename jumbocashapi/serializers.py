@@ -44,7 +44,8 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model       = models.Customer
-        fields      = ['id', 'firstname', 'lastname', 'mobile_no', 'email_id', 'ret_id']
+        fields      = ['id', 'firstname', 'lastname', 'mobile_no','ret']
+        read_only_fields = ['ret']
 
 
 class SupplierSerializer(serializers.ModelSerializer):
@@ -52,8 +53,8 @@ class SupplierSerializer(serializers.ModelSerializer):
 
     class Meta:
         model       = models.Supplier
-        fields      = ['id', 'firstname', 'lastname', 'mobile_no', 'email_id', 'ret_id']
-
+        fields      = ['id', 'firstname', 'lastname', 'mobile_no', 'ret']
+        read_only_fields = ['ret']
 
 class IncomeTransactionSerializer(serializers.ModelSerializer):
     """Serializer for Customer """
