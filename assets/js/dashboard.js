@@ -1,16 +1,19 @@
 let tk = localStorage.getItem("token");
-const logout = document.getElementById("logout");
-
-logout.addEventListener("click", (e) => {
-    localStorage.removeItem("token");
-})
 
 if (tk) {
+    const myHeaders = new Headers();
 
-    fetch("http://127.0.0.1:8000/jumbocashapi/")
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', 'tk');
+    fetch("http://127.0.0.1:8000/jumbocashapi/", {
+            method: 'GET',
+            headers: myHeaders,
+        })
         .then((response) => {
             /* Error Handling */
-            if (response.status === 400) {
+
+            if (response.status === 401) {
+
                 window.location.href = "https://jumbocashflow-app-t8.netlify.app/";
                 throw Error(response.status);
 
@@ -24,6 +27,10 @@ if (tk) {
 
 }
 
+const logout = document.getElementById("logout");
+logout.addEventListener("click", (e) => {
+    localStorage.removeItem("token");
+})
 
 
 // if (token) {
