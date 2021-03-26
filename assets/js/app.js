@@ -40,7 +40,7 @@ signup_submit.addEventListener("click", (e) => {
         })
         .then((data) => {
             console.log(username, email, number, password);
-            window.location.reload()
+            window.redirect
         })
         .catch((err) => {
             console.log(err);
