@@ -1,36 +1,35 @@
 let tk = localStorage.getItem("token");
 
-localStorage.removeItem("token");
-// if (tk) {
-//     const myHeaders = new Headers();
 
-//     myHeaders.append('Content-Type', 'application/json');
-//     myHeaders.append('Authorization', 'tk');
-//     fetch("http://127.0.0.1:8000/jumbocashapi/", {
-//             method: 'GET',
-//             headers: myHeaders,
-//         })
-//         .then((response) => {
-//             /* Error Handling */
+if (tk) {
+    const myHeaders = new Headers();
 
-//             if (response.status === 401) {
-//                 window.location.href = "https://jumbocashflow-app-t8.netlify.app/";
-//                 throw Error(response.status);
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', 'tk');
+    fetch("http://127.0.0.1:8000/jumbocashapi/", {
+            method: 'GET',
+            headers: myHeaders,
+        })
+        .then((response) => {
+            /* Error Handling */
 
-//             }
-//             console.log(response.status);
-//             return response.json();
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
+            if (response.status === 401) {
+                window.location.href = "https://jumbocashflow-app-t8.netlify.app/";
+                throw Error(response.status);
 
-// }
-// const logout = document.getElementById("logout");
-// logout.addEventListener("click", (e) => {
-//     localStorage.removeItem("token");
-// })
+            }
+            console.log(response.status);
+            return response.json();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 
+}
+const logout = document.getElementById("logout");
+logout.addEventListener("click", (e) => {
+    localStorage.removeItem("token");
+})
 // if (token) {
 
 //     res = // call /jumbocashi api endpoint with token
