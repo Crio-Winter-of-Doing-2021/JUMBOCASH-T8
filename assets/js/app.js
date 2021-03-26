@@ -39,7 +39,7 @@ signup_submit.addEventListener("click", (e) => {
             return response.json();
         })
         .then((data) => {
-            window.onload();
+            location.reload()
         })
         .catch((err) => {
             console.log(err);
