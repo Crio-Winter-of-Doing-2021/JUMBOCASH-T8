@@ -13,6 +13,7 @@ if (tk) {
             /* Error Handling */
 
             if (response.status === 401) {
+
                 window.location.href = "https://jumbocashflow-app-t8.netlify.app/";
                 throw Error(response.status);
 
@@ -25,6 +26,7 @@ if (tk) {
         });
 
 }
+
 const logout = document.getElementById("logout");
 logout.addEventListener("click", (e) => {
     localStorage.removeItem("token");
