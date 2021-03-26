@@ -66,10 +66,16 @@ login_submit.addEventListener("click", (e) => {
             if (response.status === 400) {
                 throw Error(response.status);
             }
+
             return response.json();
+
         })
         .then((data) => {
-            window.location.replace("https://jumbocashflow-app-t8.netlify.app/dashboard.html")
+            console.log(data.token);
+            let tk = data.token;
+            localStorage.setItem("token", JSON.stringify(tk));
+            window.location.href = "https://jumbocashflow-app-t8.netlify.app/dashboard.html";
+
         })
         .catch((err) => {
             console.log(err);
