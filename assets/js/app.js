@@ -25,17 +25,21 @@ signup_submit.addEventListener("click", (e) => {
                 "content-type": "application/json",
             },
             body: JSON.stringify({
-                username,
-                email,
-                number,
-                password,
+                firstname: username,
+                email: email,
+                mobile_no: number,
+                password: password,
             }),
         })
         .then((response) => {
             /* Error Handling */
+            if (response.status === 400) {
+                throw Error(response.status);
+            }
             return response.json();
         })
         .then((data) => {
+            console.log(username, email, number, password);
             window.location.reload()
         })
         .catch((err) => {
