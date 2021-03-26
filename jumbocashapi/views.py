@@ -14,6 +14,13 @@ class RetailerListView(ListAPIView):
     queryset            = Retailer.objects.all()
     serializer_class    = RetailerSerializer
 
+    '''
+    def get_queryset(self):
+            user = self.request.user
+            print(user)
+            return Retailer.objects.filter(email=user)
+    '''
+    
 class RetailerCreateView(CreateAPIView):
     """Handles Create of a Retailer object"""
     queryset            = Retailer.objects.all()
@@ -32,6 +39,9 @@ class CustomerListCreateView(ListCreateAPIView):
     queryset            = Customer.objects.all()
     serializer_class    = CustomerSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(ret=self.request.user)
+
 
 class CustomerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
     """Handles update, retrive and delete of Customer obj"""
@@ -44,6 +54,8 @@ class SupplierListCreateView(ListCreateAPIView):
     queryset            = Supplier.objects.all()
     serializer_class    = SupplierSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(ret=self.request.user)
 
 class SupplierUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
     """Handles update, retrive and delete of Supplier obj"""
