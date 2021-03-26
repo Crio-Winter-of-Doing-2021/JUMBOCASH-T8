@@ -1,4 +1,5 @@
 let tk = localStorage.getItem("token");
+
 localStorage.removeItem("token");
 // if (tk) {
 //     const myHeaders = new Headers();
@@ -29,7 +30,6 @@ localStorage.removeItem("token");
 // logout.addEventListener("click", (e) => {
 //     localStorage.removeItem("token");
 // })
-
 
 // if (token) {
 
