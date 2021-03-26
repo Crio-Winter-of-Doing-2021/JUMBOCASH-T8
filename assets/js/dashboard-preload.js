@@ -1,12 +1,11 @@
-
 let tk = localStorage.getItem("token");
-
 
 if (tk) {
     const myHeaders = new Headers();
 
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', 'Token ' + tk);
+
     fetch("http://127.0.0.1:8000/jumbocashapi/", {
             method: 'GET',
             headers: myHeaders,
@@ -27,17 +26,17 @@ if (tk) {
         });
 
 }
-const logout = document.getElementById("logout");
-logout.addEventListener("click", (e) => {
-    localStorage.removeItem("token");
-})
-// if (token) {
+// const logout = document.getElementById("logout");
+// logout.addEventListener("click", (e) => {
+//     localStorage.removeItem("token");
+// })
 
-//     res = // call /jumbocashi api endpoint with token
+// // if (token) {
 
-//         if res = true
-//     redirect to dashboard
-//     else
-//         redirect to login
-// }
+// //     res = // call /jumbocashi api endpoint with token
 
+// //         if res = true
+// //     redirect to dashboard
+// //     else
+// //         redirect to login
+// // }
