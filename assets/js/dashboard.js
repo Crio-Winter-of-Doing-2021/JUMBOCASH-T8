@@ -1,5 +1,6 @@
 let tk = localStorage.getItem("token");
 
+
 if (tk) {
     const myHeaders = new Headers();
 
@@ -29,7 +30,6 @@ const logout = document.getElementById("logout");
 logout.addEventListener("click", (e) => {
     localStorage.removeItem("token");
 })
-
 // if (token) {
 
 //     res = // call /jumbocashi api endpoint with token
