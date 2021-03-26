@@ -1,4 +1,9 @@
 let tk = localStorage.getItem("token");
+const logout = document.getElementById("logout");
+
+logout.addEventListener("click", (e) => {
+    localStorage.removeItem("token");
+})
 
 if (tk) {
 
@@ -10,6 +15,7 @@ if (tk) {
                 throw Error(response.status);
 
             }
+            console.log(response.status);
             return response.json();
         })
         .catch((err) => {
@@ -17,6 +23,8 @@ if (tk) {
         });
 
 }
+
+
 
 // if (token) {
 
