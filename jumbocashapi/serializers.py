@@ -61,7 +61,7 @@ class IncomeTransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model       = models.IncomeTransaction
-        fields      = ['trans_date_time', 'amount', 'note', 'description', \
+        fields      = ['id','trans_date_time', 'amount', 'note', 'description', \
                        'payment_mode', 'payment_status', 'due_date', 'cust_id']  
 
 
@@ -70,7 +70,7 @@ class ExpenseTransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model       = models.ExpenseTransaction
-        fields      = ['trans_date_time', 'amount', 'note', 'description', \
+        fields      = ['id','trans_date_time', 'amount', 'note', 'description', \
                        'payment_mode', 'payment_status', 'due_date', 'sup_id']
            
     

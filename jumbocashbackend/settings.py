@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'multiple_permissions',
      #apps
      'corsheaders',
      'jumbocashapi',
@@ -72,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'multiple_permissions.middlewares.PermissionMiddleware',
 ]
 
 ROOT_URLCONF = 'jumbocashbackend.urls'
