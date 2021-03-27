@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body,
@@ -39,4 +40,51 @@ nav img {
     margin-top: 6rem !important;
     float: right;
     margin-right: 5rem;
+}
+
+.sum-block {
+    height: 6rem;
+    background-color: rgb(216, 205, 193);
+    border-radius: 1rem;
+}
+
+.text-lg {
+    font-size: xx-large;
+}
+
+.fas {
+    color: black !important;
+}
+
+.bg-head-customer,
+.bg-head-supplier {
+    background-color: #47b475;
+}
+
+#myChart {
+    height: 40rem !important;
+    width: 60rem !important;
+}
+
+#back-to-top-btn {
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    background-color: #FFF;
+    color: #47b475;
+    cursor: pointer;
+    border: 2px solid #47b475;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+}
+
+#back-to-top-btn:hover,
+#back-to-top-btn:focus {
+    background-color: #47b475;
+    color: #FFF;
+    border: 2px solid #FFF;
 }

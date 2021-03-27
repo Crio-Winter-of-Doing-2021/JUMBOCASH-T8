@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="assets/js/dashboard-preload.js"></script>
+    <script src="assets/js/load.js"></script>
     <meta name="description" content="Jumbotail | Cash Flow Management App">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="assets/css/dashboard.css">
-
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <title>Cash Flow Management App</title>
 </head>
 
@@ -50,6 +49,15 @@
     <div class="bar bg-light">
 
         <p class="heading">Cashflow</p>
+        <!-- <div class="dropdown pr-5">
+            <button class="btn btn-secondary dropdown-toggle entity-select " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Entity
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Customer</a>
+                <a class="dropdown-item" href="#">Supplier</a>
+            </div>
+        </div> -->
         <button class="btn btn-outline-danger my-2 my-sm-0 expense-btn" type="submit" data-target="#expenseModal" data-toggle="modal">- Expense</button>
         <button class="btn btn-outline-success my-2 my-sm-0 income-btn" type="submit" data-target="#incomeModal" data-toggle="modal">+ Income</button>
 
@@ -75,13 +83,6 @@
                                     <input class="form-control" type="text" id="income-text-input">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="income-datetime-local-input" class="col-4 col-form-label pr-1">Date and time :</label>
-                                <div class="col-8 pl-1">
-                                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="income-datetime-local-input">
-                                </div>
-                            </div>
-
 
                             <div class="form-group row">
                                 <label for="income-date-input" class="col-4 col-form-label ">Due Date :</label>
@@ -156,13 +157,6 @@
                                     <input class="form-control" type="text" id="expense-text-input">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="expense-datetime-local-input" class="col-4 col-form-label pr-1 ">Date and time :</label>
-                                <div class="col-8 pl-1">
-                                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="expense-datetime-local-input">
-                                </div>
-                            </div>
-
 
                             <div class="form-group row">
                                 <label for="expense-date-input" class="col-4 col-form-label ">Due Date :</label>
@@ -218,6 +212,256 @@
     </div>
 
 
+    <section class="container-fluid text-center mt-3">
+        <div class="row rowsetting">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+                <div class="sum-block d-block mx-2 my-2 p-4 font-weight-bold"> AMOUNT <br> 00</div>
+
+            </div>
+            <div class=" mt-4 font-weight-bold text-lg mr-3"> + </div>
+            <br>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+                <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> CASH IN <br> 00</div>
+            </div>
+            <div class=" mt-4 font-weight-bold text-lg mr-3"> - </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+                <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH OUT <br> 00</div>
+            </div>
+            <div class=" mt-4 font-weight-bold text-lg mr-3"> = </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+                <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> BALANCE<br> 00</div>
+
+            </div>
+        </div>
+    </section>
+    <section class="container mt-4">
+        <canvas id="myChart"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June'],
+                    datasets: [{
+                        label: 'Income',
+                        data: [1200, 1900, 3000, 5000, 2000, 3000],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+    </section>
+    <section class="container-fluid mt-5 mb-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Transaction Date</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Payment Status</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>+ 1000</td>
+                    <td>12/10/21</td>
+                    <td>11/3/22</td>
+                    <td>Pending</td>
+                    <td>
+                        <i class="fas fa-edit " data-target="#customerModal" data-toggle="modal"></i>
+                        <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal"></i>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>- 1000</td>
+                    <td>12/10/21</td>
+                    <td>11/3/22</td>
+                    <td>Pending</td>
+                    <td><i class="fas fa-edit " data-target="#supplierModal" data-toggle="modal"></i>
+                        <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>+ 1000</td>
+                    <td>12/10/21</td>
+                    <td>11/3/22</td>
+                    <td>Pending</td>
+                    <td><i class="fas fa-edit "></i>
+                        <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--Customer Modal -->
+        <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-head-customer">
+                        <h5 class="modal-title m-auto text-white font-weight-bold" id="customerLabel">Add Customer Details</h5>
+
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- form -->
+                        <form id="customer-form" method="post">
+
+                            <div class="form-row justify-content">
+                                <div class="form-group row">
+                                    <label for="customer-text-input" class="col-4 col-form-label">First Name :</label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="text" id="customer-text-input">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="customer-text-input" class="col-4 col-form-label">Last Name :</label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="text">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row ">
+                                    <label for="customer-number-input" class="col-4 col-form-label">Phone No. : </label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="tel" id="customer-number-input">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Supplier Modal -->
+        <div class="modal fade" id="supplierModal" tabindex="-1" role="dialog" aria-labelledby="supplierLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-head-supplier">
+                        <h5 class="modal-title m-auto text-white font-weight-bold" id="supplierLabel">Add Supplier Details</h5>
+
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- form -->
+                        <form id="supplier-form" method="post">
+
+                            <div class="form-row justify-content">
+                                <div class="form-group row">
+                                    <label for="csupplier-text-input" class="col-4 col-form-label">First Name :</label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="text" id="supplier-text-input">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="supplier-text-input" class="col-4 col-form-label">Last Name :</label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="text">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row ">
+                                    <label for="supplier-number-input" class="col-4 col-form-label">Phone No. : </label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="tel" id="supplier-number-input">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More info Modal -->
+        <div class="modal fade" id="more-info" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="more-infoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="more-infoLabel">More Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="supplier-text-input" class="col-4 col-form-label">Name : ABC</label>
+
+                        </div>
+                        <div class="form-group row">
+                            <label for="supplier-text-input" class="col-4 col-form-label">Title : abc</label>
+                            <label for="supplier-text-input" class="col-8 col-form-label">Phone No. : 123456789</label>
+
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="supplier-text-input" class="col-10 col-form-label">Payment Mode : abc</label>
+
+                        </div>
+                        <div class="form-group row">
+                            <label for="supplier-text-input" class="col-10 col-form-label">Description : abc</label>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button id="back-to-top-btn"><i class=" fas fa-angle-double-up"></i></button>
 </body>
 <script src="assets/js/dashboard.js"></script>
 <!-- jQuery library -->
