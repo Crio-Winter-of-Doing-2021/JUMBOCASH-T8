@@ -11,6 +11,40 @@ sign_up_btn.addEventListener("click", () => {
 sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
 });
+login_submit.addEventListener("click", (e) => {
+
+    let login_email = document.querySelector("#login-email").value;
+    let login_password = document.querySelector("#login-password").value;
+    fetch("http://127.0.0.1:8000/jumbocashapi/login/", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                username: login_email,
+                password: login_password,
+            }),
+        })
+        .then((response) => {
+            /* Error Handling */
+            if (response.status === 400) {
+                throw Error(response.status);
+            }
+
+            return response.json();
+
+        })
+        .then((data) => {
+            let tk = data.token;
+            localStorage.setItem("token", JSON.stringify(tk));
+            window.location.href = "https://jumbocashflow-app-t8.netlify.app/dashboard.html";
+
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+});
 
 signup_submit.addEventListener("click", (e) => {
     e.preventDefault();
@@ -40,42 +74,6 @@ signup_submit.addEventListener("click", (e) => {
         })
         .then((data) => {
             location.reload()
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-
-});
-
-login_submit.addEventListener("click", (e) => {
-
-    let login_email = document.querySelector("#login-email").value;
-    let login_password = document.querySelector("#login-password").value;
-    fetch("http://127.0.0.1:8000/jumbocashapi/login/", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                username: login_email,
-                password: login_password,
-            }),
-        })
-        .then((response) => {
-            /* Error Handling */
-            if (response.status === 400) {
-                throw Error(response.status);
-            }
-
-            return response.json();
-
-        })
-        .then((data) => {
-            console.log(data.token);
-            let tk = data.token;
-            localStorage.setItem("token", JSON.stringify(tk));
-            window.location.href = "https://jumbocashflow-app-t8.netlify.app/dashboard.html";
-
         })
         .catch((err) => {
             console.log(err);
