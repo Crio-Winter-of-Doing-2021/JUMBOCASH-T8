@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2g-v_!ecr*k!$w_*wxfc8hc3&&180cga3km9jv4pxhx&vxywce'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'jumbocashbackend.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # heroku-postgres
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -112,8 +112,11 @@ DATABASES = {
         'PORT':'5432'
     }
 }
-'''
 
+
+
+
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -124,7 +127,7 @@ DATABASES = {
         'PORT':'5432'
     }
 }
-
+'''
 
 
 # Password validation
