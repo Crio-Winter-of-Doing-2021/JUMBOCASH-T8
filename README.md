@@ -42,6 +42,10 @@ Cash Flow Management App is an application that enables small business owners to
 | 2. | [backend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/backend) | contains all backend code |
 | 3. | [frontend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/frontend) | contains all frontend code |
 
+## Crio Winter of Doing 2021
+
+![crio](https://user-images.githubusercontent.com/55245862/112743082-cdd1e380-8fb1-11eb-9a29-8b26fddad81b.png)
+
 ## Team:
 
 > "Alone we can do so little; together we can do so much."
