@@ -4,7 +4,6 @@ chardet==4.0.0
 Django==3.1.7
 django-cors-headers==3.7.0
 djangorestframework==3.12.2
-gunicorn==20.1.0
 httpie==2.4.0
 idna==2.10
 multiple-permissions==0.1.9
@@ -16,4 +15,3 @@ requests==2.25.1
 requests-toolbelt==0.9.1
 sqlparse==0.4.1
 urllib3==1.26.4
-whitenoise==5.2.0
