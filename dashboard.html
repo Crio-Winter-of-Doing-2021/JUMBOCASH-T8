@@ -17,9 +17,12 @@
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <title>Cash Flow Management App</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="preload">
     <nav class="navbar navbar-expand-md nav-bg navbar-dark fixed-top">
 
         <a href="https://jumbotail.com/" class="navbar-brand text-warning font-weight-bold"><img src="assets/img/JumbotailLogo.png" alt=""></a>
@@ -32,9 +35,9 @@
                     <a href="#" class="nav-link text-white">Dashboard
                         </a>
                 </li>
-                <li class="nav-item">
-                    <a href="form.html" class="nav-link text-white">Profile
-                        </a>
+                <li class="nav-item" id="nav-profile">
+                    <!-- <a href="form.html" class="nav-link text-white">Profile
+                        </a> -->
                 </li>
                 <li class="nav-item">
                     <a href="index.html" class="nav-link text-white" id="logout">Logout
@@ -48,21 +51,44 @@
 
     <div class="bar bg-light">
 
+
         <p class="heading">Cashflow</p>
-        <!-- <div class="dropdown pr-5">
-            <button class="btn btn-secondary dropdown-toggle entity-select " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Entity
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Customer</a>
-                <a class="dropdown-item" href="#">Supplier</a>
-            </div>
-        </div> -->
+
         <button class="btn btn-outline-danger my-2 my-sm-0 expense-btn" type="submit" data-target="#expenseModal" data-toggle="modal">- Expense</button>
         <button class="btn btn-outline-success my-2 my-sm-0 income-btn" type="submit" data-target="#incomeModal" data-toggle="modal">+ Income</button>
 
     </div>
+    <header class="header">
+        <button class="header__button ml-4" id="btnNav" type="button">
+            <i class="material-icons">menu</i>
+        </button>
+    </header>
+    <nav class="nav">
+        <div class="nav__links">
+            <a href="#" class="nav__link">
+             Dashboard
+            </a>
+            <a class="nav__link " href="#" data-target="#incomeModal" data-toggle="modal">
+             Add Income
+            </a>
+            <a class="nav__link" href="#" data-target="#expenseModal" data-toggle="modal">
+                Add Expense
+            </a>
 
+            <a class=" dropdown-toggle nav__link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Add Entity
+                    </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#" data-target="#customerModal" data-toggle="modal">Customer</a>
+                <a class="dropdown-item" href="#" data-target="#supplierModal" data-toggle="modal">Supplier</a>
+            </div>
+            <a class="nav__link" href="#">
+               Profile
+            </a>
+        </div>
+        <div class="nav__overlay"></div>
+    </nav>
     <!--Income Modal -->
     <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="incomeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -102,7 +128,7 @@
                             <div class="form-group row ">
                                 <label for="income-number-input" class="form-label pr-0 col-2">Payment Mode: </label>
                                 <div class="col-4">
-                                    <select class="custom-select">
+                                    <select class="custom-select" id="income_mode_select">
                                         <option selected>Options</option>
                                         <option value="1">Cash</option>
                                         <option value="2">Card</option>
@@ -112,10 +138,17 @@
                                 </div>
                                 <label for="income-number-input" class="form-label pr-0 col-2">Payment Status: </label>
                                 <div class="col-4">
-                                    <select class="custom-select">
+                                    <select class="custom-select" id="income_status_select">
                                         <option selected>Options</option>
                                         <option value="1">Pending</option>
                                         <option value="2">Received</option>
+                                    </select>
+                                </div>
+                                <label for="income-number-input" class="form-label pr-0 col-3">Customer:</label>
+                                <div class="col-8">
+                                    <select class="custom-select" id="income_cust_select">
+                                        <option selected>Select email</option>
+                                        <option value="1">abc@gamail.com</option>
                                     </select>
                                 </div>
 
@@ -131,7 +164,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" id="income_save">Save</button>
                 </div>
             </div>
         </div>
@@ -190,6 +223,13 @@
                                         <option selected>Options</option>
                                         <option value="1">Pending</option>
                                         <option value="2">Paid</option>
+                                    </select>
+                                </div>
+                                <label for="expense-number-input" class="form-label pr-0 col-3">Supplier:</label>
+                                <div class="col-8">
+                                    <select class="custom-select" id="expense_sup_select">
+                                        <option selected>Select email</option>
+                                        <option value="1">abc@gamail.com</option>
                                     </select>
                                 </div>
 
@@ -342,13 +382,13 @@
                                 <div class="form-group row">
                                     <label for="customer-text-input" class="col-4 col-form-label">First Name :</label>
                                     <div class="col-8 pl-4">
-                                        <input class="form-control" type="text" id="customer-text-input">
+                                        <input class="form-control" type="text" id="customer-text-input" placeholder="first name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="customer-text-input" class="col-4 col-form-label">Last Name :</label>
                                     <div class="col-8 pl-4">
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" placeholder="last name">
                                     </div>
                                 </div>
 
@@ -356,7 +396,13 @@
                                 <div class="form-group row ">
                                     <label for="customer-number-input" class="col-4 col-form-label">Phone No. : </label>
                                     <div class="col-8 pl-4">
-                                        <input class="form-control" type="tel" id="customer-number-input">
+                                        <input class="form-control" type="tel" id="customer-number-input" placeholder="phone number">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="customer-email-input" class="col-4 col-form-label">Email ID : </label>
+                                    <div class="col-8 pl-4">
+                                        <input type="email" class="form-control" id="customer-email-input" placeholder="email">
                                     </div>
                                 </div>
 
@@ -390,13 +436,13 @@
                                 <div class="form-group row">
                                     <label for="csupplier-text-input" class="col-4 col-form-label">First Name :</label>
                                     <div class="col-8 pl-4">
-                                        <input class="form-control" type="text" id="supplier-text-input">
+                                        <input class="form-control" type="text" id="supplier-text-input" placeholder="first name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="supplier-text-input" class="col-4 col-form-label">Last Name :</label>
                                     <div class="col-8 pl-4">
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" placeholder="last name">
                                     </div>
                                 </div>
 
@@ -404,7 +450,13 @@
                                 <div class="form-group row ">
                                     <label for="supplier-number-input" class="col-4 col-form-label">Phone No. : </label>
                                     <div class="col-8 pl-4">
-                                        <input class="form-control" type="tel" id="supplier-number-input">
+                                        <input class="form-control" type="tel" id="supplier-number-input" placeholder="phone no.">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="supplier-email-input" class="col-4 col-form-label">Email ID : </label>
+                                    <div class="col-8 pl-4">
+                                        <input type="email" class="form-control" id="supplier-email-input" placeholder="email">
                                     </div>
                                 </div>
 

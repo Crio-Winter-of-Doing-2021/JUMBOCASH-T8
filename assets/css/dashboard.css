@@ -44,8 +44,7 @@ nav img {
 
 .sum-block {
     height: 6rem;
-    background-color: rgb(216, 205, 193);
-    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .text-lg {
@@ -87,4 +86,91 @@ nav img {
     background-color: #47b475;
     color: #FFF;
     border: 2px solid #FFF;
+}
+
+.preload * {
+    transition: none !important;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: #333333;
+    display: flex;
+}
+
+.header__button {
+    width: var(--header-height);
+    flex-shrink: 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: #47b475;
+    cursor: pointer;
+}
+
+.material-icons {
+    position: absolute;
+    top: 7rem;
+}
+
+.nav__links {
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 250px;
+    background: #ffffff;
+    transform: translateX(-250px);
+    transition: transform 0.3s;
+}
+
+.nav--open .nav__links {
+    transform: translateX(0);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    color: #666666;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 12px 15px;
+    background: transform 0.2s;
+}
+
+.nav__link>i {
+    margin-right: 15px;
+}
+
+.nav__link:active {
+    color: #009578;
+}
+
+.nav__link:active,
+.nav__link:hover {
+    background: #eeeeee;
+}
+
+.nav__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.nav--open .nav__overlay {
+    visibility: visible;
+    opacity: 1;
 }
