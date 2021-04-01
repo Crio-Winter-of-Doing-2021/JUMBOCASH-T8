@@ -43,6 +43,47 @@ Cash Flow Management App is an application that enables small business owners to
 | 2. | [backend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/backend) | contains all backend code |
 | 3. | [frontend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/frontend) | contains all frontend code |
 
+
+### Backend Setup Instructions
+
+- Fork and Clone the repo using
+```
+$ git clone https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8.git
+```
+- Change Branch to `backend` using 
+```
+$ git checkout backend
+```
+- Setup Virtual environment
+```
+$ python3 -m venv jumbovenv
+```
+- Activate the virtual environment
+```
+$ source jumbovenv/bin/activate
+```
+- Install dependencies using
+```
+$ pip3 install -r requirements.txt
+```
+- Make migrations using
+```
+$ python3 manage.py makemigrations
+```
+- Migrate Database
+```
+$ python3 manage.py migrate
+```
+- Create a superuser
+```
+$ python3 manage.py createsuperuser
+```
+- Run server using
+```
+$ python3 manage.py runserver
+``` 
+
+
 ## Crio Winter of Doing 2021
 
 ![crio](https://user-images.githubusercontent.com/55245862/112743082-cdd1e380-8fb1-11eb-9a29-8b26fddad81b.png)
