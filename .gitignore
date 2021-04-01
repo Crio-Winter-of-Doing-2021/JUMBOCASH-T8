@@ -238,5 +238,6 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/venv,django,virtualenv,python,vscode
 
 #virtualenv
-.jumbocashapi
-/jumbocashapi
+
+.jumbovenv
+/jumbovenv

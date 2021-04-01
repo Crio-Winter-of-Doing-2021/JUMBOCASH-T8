@@ -29,11 +29,13 @@ Cash Flow Management App is an application that enables small business owners to
 - **API Testing & Documentation**: Postman
 - **Version Control**: Git and GitHub
 - **Database**: PostgreSQL
+
 - **Hosting**: Netlify, Heroku
 ## Links:
 
 - **Frontend**: [https://jumbocashflow-app-t8.netlify.app/](https://jumbocashflow-app-t8.netlify.app/)
 - **Backend**: [https://jumbocashapi.herokuapp.com/jumbocashapi/](https://jumbocashapi.herokuapp.com/jumbocashapi/)
+
 
 #### GitHub Repository Structure
 
@@ -42,6 +44,46 @@ Cash Flow Management App is an application that enables small business owners to
 | 1. | [main](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/main) | contains the main code  |
 | 2. | [backend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/backend) | contains all backend code |
 | 3. | [frontend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/frontend) | contains all frontend code |
+
+### Backend Setup Instructions
+
+- Fork and Clone the repo using
+```
+$ git clone https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8.git
+```
+- Change Branch to `backend` using 
+```
+$ git checkout backend
+```
+- Setup Virtual environment
+```
+$ python3 -m venv jumbovenv
+```
+- Activate the virtual environment
+```
+$ source jumbovenv/bin/activate
+```
+- Install dependencies using
+```
+$ pip3 install -r requirements.txt
+```
+- Make migrations using
+```
+$ python3 manage.py makemigrations
+```
+- Migrate Database
+```
+$ python3 manage.py migrate
+```
+- Create a superuser
+```
+$ python3 manage.py createsuperuser
+```
+- Run server using
+```
+$ python3 manage.py runserver
+``` 
+
 
 ## Crio Winter of Doing 2021
 
