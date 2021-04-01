@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('jumbocashapi', '0002_customer_expensetransaction_incometransaction_supplier'),
     ]
-
+    
     operations = [
         migrations.AlterField(
             model_name='customer',
