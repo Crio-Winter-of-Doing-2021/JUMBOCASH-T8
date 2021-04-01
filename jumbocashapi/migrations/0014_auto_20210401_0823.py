@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
         ('jumbocashapi', '0013_auto_20210326_0515'),
     ]
 
+
     operations = [
         migrations.AddField(
             model_name='customer',
