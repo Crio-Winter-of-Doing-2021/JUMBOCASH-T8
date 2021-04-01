@@ -101,7 +101,7 @@ class Customer(models.Model):
     """Model for customer enity (cash inflow entity)"""
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255, blank=True)
-    mobile_no   = models.CharField(max_length=10)
+    mobile_no   = models.CharField(max_length=10, blank=True)
     email_id    = models.EmailField(max_length=255, blank=True)
     ret         = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -115,7 +115,7 @@ class Supplier(models.Model):
     """Model for customer enity (cash outflow entity)"""
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255, blank=True)
-    mobile_no   = models.CharField(max_length=10)
+    mobile_no   = models.CharField(max_length=10, blank=True)
     email_id    = models.EmailField(max_length=255, blank=True)
     ret         = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
