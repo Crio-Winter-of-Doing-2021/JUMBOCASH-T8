@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2g-v_!ecr*k!$w_*wxfc8hc3&&180cga3km9jv4pxhx&vxywce'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -108,10 +108,10 @@ WSGI_APPLICATION = 'jumbocashbackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2enpki0al8jhh',
-        'USER': 'lshekmsekgcvym',
-        'PASSWORD':'b8408c6f6dab3804ca7f092ae5dc41f3b3042f7ba7735dd7d741b6f4b95c41f7',
-        'HOST':'ec2-54-164-241-193.compute-1.amazonaws.com',
+        'NAME': 'dnubsc7cdur4s',
+        'USER': 'diwkseamkiqchq',
+        'PASSWORD':'d5512cb35c7d04e8d76874c8ad8a9faa5c27ec5e726df43979fe5ff350f6261e',
+        'HOST':'ec2-54-145-102-149.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }
