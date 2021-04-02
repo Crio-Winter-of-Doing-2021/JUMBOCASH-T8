@@ -168,6 +168,11 @@ dmypy.json
 # Translations
 
 # Django stuff:
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+jumbocashapi/migrations/*
+.jumbocashapi/migrations/*
 
 # Flask stuff:
 
