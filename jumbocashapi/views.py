@@ -10,6 +10,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .permissions import (RetailerPermission, CustomerSupplierPermission, IncomeTransactionPermission,
                             ExpenseTransactionPermission)
+                           
 import requests
  
 class RetailerListView(ListAPIView):
@@ -41,9 +42,11 @@ class RetailerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
 class CustomerListCreateView(ListCreateAPIView):
     """Handles List and Create of a Customer object"""
     serializer_class    = CustomerSerializer
+    filterset_fields     = ('id','firstname', 'lastname', 'mobile_no', 'email_id')
 
     def perform_create(self, serializer):
         serializer.save(ret=self.request.user)
+
 
     def get_queryset(self):
         """Returns only the objects related to current user"""
@@ -61,6 +64,7 @@ class CustomerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
 class SupplierListCreateView(ListCreateAPIView):
     """Handles List and Create of a Supplier object"""
     serializer_class    = SupplierSerializer
+    filterset_fields     = ('id','firstname', 'lastname', 'mobile_no', 'email_id')
 
     def perform_create(self, serializer):
         serializer.save(ret=self.request.user)
@@ -82,6 +86,8 @@ class IncomeTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a IncomeTransaction object"""
     #queryset            = IncomeTransaction.objects.all()
     serializer_class    = IncomeTransactionSerializer
+    filterset_fields    = ['id','trans_date_time', 'amount', 'note', \
+                       'payment_mode', 'payment_status', 'due_date', 'cust_id']
 
     def get_queryset(self):
         """Returns only the objects related to current user"""
@@ -110,6 +116,8 @@ class ExpenseTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a ExpenseTransaction object"""
     #queryset            = ExpenseTransaction.objects.all()
     serializer_class    = ExpenseTransactionSerializer
+    filerset_fields      = ['id','trans_date_time', 'amount', 'note', \
+                       'payment_mode', 'payment_status', 'due_date', 'sup_id']
 
     def get_queryset(self):
         """Returns only the objects related to current user"""
