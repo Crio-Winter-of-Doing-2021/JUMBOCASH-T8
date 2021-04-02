@@ -129,3 +129,4 @@ class ExpenseTransactionUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
     queryset            = ExpenseTransaction.objects.all()
     serializer_class    = ExpenseTransactionSerializer
     permission_classes  = (IsAuthenticated, ExpenseTransactionPermission)
+
