@@ -113,7 +113,8 @@ nav img {
 
 .material-icons {
     position: absolute;
-    top: 7rem;
+    top: 6.6rem;
+    font-size: 30px !important;
 }
 
 .nav__links {
