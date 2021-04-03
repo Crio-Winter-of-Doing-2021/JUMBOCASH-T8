@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 from rest_framework.authtoken.views import obtain_auth_token
+from django_filters.views import FilterView
+from .models import *
 
 
 urlpatterns = [
@@ -10,11 +12,11 @@ urlpatterns = [
     path('retailers/<int:pk>', views.RetailerUpdateRetriveDeleteView.as_view()),
 
     # Customer Urls
-    path('customers', views.CustomerListCreateView.as_view()),
+    path('customers/', views.CustomerListCreateView.as_view()),
     path('customers/<int:pk>', views.CustomerUpdateRetriveDeleteView.as_view()),
     
     # Supplier Urls
-    path('suppliers', views.SupplierListCreateView.as_view()),
+    path('suppliers/', views.SupplierListCreateView.as_view()),
     path('suppliers/<int:pk>', views.SupplierUpdateRetriveDeleteView.as_view()),
     
     # Transaction Urls
