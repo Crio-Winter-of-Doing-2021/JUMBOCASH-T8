@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="assets/js/load.js"></script> -->
+    <meta name="description" content="Jumbotail | Cash Flow Management App">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <title>Cash Flow Management App</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body class="preload">
+    <nav class="navbar navbar-expand-md nav-bg navbar-dark fixed-top">
+
+        <a href="https://jumbotail.com/" class="navbar-brand text-warning font-weight-bold"><img src="assets/img/JumbotailLogo.png" alt=""></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#collapsenavbar" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse text-center " id="collapsenavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white">Dashboard
+                        </a>
+                </li>
+                <li class="nav-item" id="nav-profile">
+                    <!-- <a href="form.html" class="nav-link text-white">Profile
+                        </a> -->
+                </li>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link text-white" id="logout">Logout
+                        </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="bar bg-light">
+
+
+        <p class="heading">Cashflow</p>
+
+
+    </div>
+    <header class="header">
+        <button class="header__button ml-4" id="btnNav" type="button">
+            <i class="material-icons">menu</i>
+        </button>
+    </header>
+    <nav class="nav">
+        <div class="nav__links">
+            <a href="dashboard.html" class="nav__link">
+             Dashboard
+            </a>
+            <a class="nav__link " href="transaction.html">
+                Transactions
+               </a>
+            <a class=" dropdown-toggle nav__link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Entities
+              </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="customer.html">Customer</a>
+                <a class="dropdown-item" href="#">Supplier</a>
+            </div>
+
+            <a class="nav__link" href="#" data-target="#supplierModal" data-toggle="modal" id="add_supplier"> Add Supplier</a>
+
+            <a class="nav__link" href="#">
+               Profile
+            </a>
+            <a class="nav__link logout" href="index.html">
+                Logout
+             </a>
+        </div>
+        <div class="nav__overlay"></div>
+    </nav>
+
+    <section class="container-fluid mt-5 mb-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mobile No. </th>
+                    <th scope="col">Email </th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody id="entity-table">
+                <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>+ 1000</td>
+                    <td>12/10/21</td>
+                    <td>11/3/22</td>
+                    <td>
+                        <i class="fas fa-edit " data-target="#incomeModal" data-toggle="modal"></i>
+                        <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal"></i>
+                        <i class="fas fa-trash-alt ml-2"></i>
+
+                    </td>
+
+                </tr> -->
+
+            </tbody>
+        </table>
+
+        <!--Supplier Modal -->
+        <div class="modal fade" id="supplierModal" tabindex="-1" role="dialog" aria-labelledby="supplierLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-head-supplier">
+                        <h5 class="modal-title m-auto text-white font-weight-bold" id="supplierLabel">Add Supplier Details</h5>
+
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- form -->
+                        <form id="supplier-form" method="post">
+
+                            <div class="form-row justify-content">
+                                <div class="form-group row">
+                                    <label for="csupplier-text-input" class="col-4 col-form-label">First Name :</label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="text" id="supplier-firstname-input" placeholder="first name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="supplier-text-input" class="col-4 col-form-label">Last Name :</label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="text" id="supplier-lastname-input" placeholder="last name">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row ">
+                                    <label for="supplier-number-input" class="col-4 col-form-label">Phone No. : </label>
+                                    <div class="col-8 pl-4">
+                                        <input class="form-control" type="tel" id="supplier-number-input" placeholder="phone no.">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="supplier-email-input" class="col-4 col-form-label">Email ID : </label>
+                                    <div class="col-8 pl-4">
+                                        <input type="email" class="form-control" id="supplier-email-input" placeholder="email">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="supplier-save">Save</button>
+                        <button type="button" class="btn btn-primary" id="supplier-update">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </section>
+
+    <button id="back-to-top-btn"><i class=" fas fa-angle-double-up"></i></button>
+</body>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/supplier.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

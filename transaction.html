@@ -40,7 +40,7 @@
                         </a> -->
                 </li>
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link text-white logout">Logout
+                    <a href="index.html" class="nav-link text-white" id="logout">Logout
                         </a>
                 </li>
 
@@ -54,6 +54,8 @@
 
         <p class="heading">Cashflow</p>
 
+        <button class="btn btn-outline-danger my-2 my-sm-0 expense-btn" type="submit" data-target="#expenseModal" data-toggle="modal">- Expense</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 income-btn" type="submit" data-target="#incomeModal" data-toggle="modal">+ Income</button>
 
     </div>
     <header class="header">
@@ -61,23 +63,27 @@
             <i class="material-icons">menu</i>
         </button>
     </header>
-    <nav class="nav">
+    <nav class="nav " id="side-nav">
         <div class="nav__links">
-            <a href="#" class="nav__link">
+            <a href="dashboard.html" class="nav__link">
              Dashboard
             </a>
-            <a class="nav__link " href="transaction.html">
-             Transactions
+            <a class="nav__link " href="#" data-target="#incomeModal" data-toggle="modal" id="add_income">
+             Add Income
+            </a>
+            <a class="nav__link" href="#" data-target="#expenseModal" data-toggle="modal" id="add_expense">
+                Add Expense
             </a>
 
-            <a class=" dropdown-toggle nav__link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class=" dropdown-toggle nav__link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Entities
                     </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="customer.html">Customer</a>
-                <a class="dropdown-item" href="supplier.html" data-target="#supplierModal" data-toggle="modal">Supplier</a>
+                <a class="dropdown-item" href="supplier.html">Supplier</a>
             </div>
+
             <a class="nav__link" href="#">
                Profile
             </a>
@@ -111,7 +117,7 @@
                             <div class="form-group row">
                                 <label for="income-date-input" class="col-4 col-form-label ">Due Date :</label>
                                 <div class="col-8 pl-4">
-                                    <input class="form-control" type="date" value="2011-08-19" id="income-date-input">
+                                    <input class="form-control" type="date" id="income-date-input">
                                 </div>
                             </div>
 
@@ -119,7 +125,7 @@
                             <div class="form-group row ">
                                 <label for="income-number-input" class="col-4 col-form-label">Amount : </label>
                                 <div class="col-8">
-                                    <input class="form-control" type="number" value="42" id="income-number-input">
+                                    <input class="form-control" type="number" id="income-number-input">
                                 </div>
                             </div>
 
@@ -144,9 +150,9 @@
                                 </div>
                                 <label for="income-number-input" class="form-label pr-0 col-3">Customer:</label>
                                 <div class="col-8">
-                                    <select class="custom-select" id="income_cust_select">
+                                    <select class="custom-select cust_email" id="income_cust_select"> 
                                         <option selected>Select email</option>
-                                        <option value="1">abc@gamail.com</option>
+                                    
                                     </select>
                                 </div>
 
@@ -162,7 +168,8 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="income_save">Save</button>
+                    <button type="button" class="btn btn-primary" id="income-save">Save</button>
+                    <button type="button" class="btn btn-primary" id="income-update">Update</button>
                 </div>
             </div>
         </div>
@@ -192,7 +199,7 @@
                             <div class="form-group row">
                                 <label for="expense-date-input" class="col-4 col-form-label ">Due Date :</label>
                                 <div class="col-8 pl-4">
-                                    <input class="form-control" type="date" value="2011-08-19" id="expense-date-input">
+                                    <input class="form-control" type="date" id="expense-date-input">
                                 </div>
                             </div>
 
@@ -200,14 +207,14 @@
                             <div class="form-group row ">
                                 <label for="expense-number-input" class="col-4 col-form-label">Amount : </label>
                                 <div class="col-8">
-                                    <input class="form-control" type="number" value="42" id="expense-number-input">
+                                    <input class="form-control" type="number" id="expense-number-input">
                                 </div>
                             </div>
 
                             <div class="form-group row ">
                                 <label for="expense-number-input" class="form-label pr-0 col-2">Payment Mode: </label>
                                 <div class="col-4">
-                                    <select class="custom-select">
+                                    <select class="custom-select" id="expense_mode_select">
                                         <option selected>Options</option>
                                         <option value="1">Cash</option>
                                         <option value="2">Card</option>
@@ -217,7 +224,7 @@
                                 </div>
                                 <label for="expense-number-input" class="form-label pr-0 col-2">Payment Status: </label>
                                 <div class="col-4">
-                                    <select class="custom-select">
+                                    <select class="custom-select" id="expense_status_select">
                                         <option selected>Options</option>
                                         <option value="1">Pending</option>
                                         <option value="2">Paid</option>
@@ -225,9 +232,9 @@
                                 </div>
                                 <label for="expense-number-input" class="form-label pr-0 col-3">Supplier:</label>
                                 <div class="col-8">
-                                    <select class="custom-select" id="expense_sup_select">
+                                    <select class="custom-select sup_email" id="expense_sup_select">
                                         <option selected>Select email</option>
-                                        <option value="1">abc@gamail.com</option>
+                                      
                                     </select>
                                 </div>
 
@@ -243,95 +250,48 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" id="expense-save">Save</button>
+                    <button type="button" class="btn btn-primary" id="expense-update">Update</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <section class="container-fluid text-center mt-3">
-        <div class="row rowsetting">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
-                <div class="sum-block d-block mx-2 my-2 p-4 font-weight-bold"> AMOUNT <br> 00</div>
 
-            </div>
-            <div class=" mt-4 font-weight-bold text-lg mr-3"> + </div>
-            <br>
-            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
-                <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> CASH IN <br> 00</div>
-            </div>
-            <div class=" mt-4 font-weight-bold text-lg mr-3"> - </div>
-            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
-                <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH OUT <br> 00</div>
-            </div>
-            <div class=" mt-4 font-weight-bold text-lg mr-3"> = </div>
-            <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
-                <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> BALANCE<br> 00</div>
+    <section class="container-fluid mt-5 mb-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Transaction Date</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Payment Status</th>
+                    <th></th>
 
-            </div>
-        </div>
-    </section>
-    <section class="container mt-4">
-        <canvas id="myChart"></canvas>
-        <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June'],
-                    datasets: [{
-                        label: 'Income',
-                        data: [1200, 1900, 3000, 5000, 2000, 3000],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        </script>
+                </tr>
+            </thead>
+            <tbody id="entity_table">
 
-    </section>
-    
+            </tbody>
+        </table>
+
         <!-- More info Modal -->
         <div class="modal fade" id="more-info" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="more-infoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="more-infoLabel">More Info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title m-auto text-white font-weight-bold" id="more-infoLabel">More Info</h5>
+
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group row">
+                    <div id="modal-body">
+                        <!-- <div class="form-group row">
                             <label for="supplier-text-input" class="col-4 col-form-label">Name : ABC</label>
 
-                        </div>
-                        <div class="form-group row">
+                        </div> -->
+                        <!-- <div class="form-group row">
                             <label for="supplier-text-input" class="col-4 col-form-label">Title : abc</label>
                             <label for="supplier-text-input" class="col-8 col-form-label">Phone No. : 123456789</label>
 
@@ -345,7 +305,7 @@
                         <div class="form-group row">
                             <label for="supplier-text-input" class="col-10 col-form-label">Description : abc</label>
 
-                        </div>
+                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -359,6 +319,7 @@
     <button id="back-to-top-btn"><i class=" fas fa-angle-double-up"></i></button>
 </body>
 <script src="assets/js/dashboard.js"></script>
+<script src="assets/js/transaction.js"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->

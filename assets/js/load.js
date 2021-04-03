@@ -5,7 +5,7 @@ var p = JSON.parse(tk);
 console.log(p);
 console.log(typeof(p));
 
-fetch("http://127.0.0.1:8000/jumbocashapi/", {
+fetch("https://jumbocashapi.herokuapp.com/jumbocashapi/", {
         method: 'GET',
         headers: { "Authorization": "Token " + p },
     })
