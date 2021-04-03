@@ -51,7 +51,7 @@ class CustomerListCreateView(ListCreateAPIView):
     def get_queryset(self):
         """Returns only the objects related to current user"""
         user = self.request.user
-        return Customer.objects.filter(ret=user)
+        return Customer.objects.filter(ret=user).order_by('-id')
 
 
 class CustomerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
@@ -72,7 +72,7 @@ class SupplierListCreateView(ListCreateAPIView):
     def get_queryset(self):
         """Returns only the objects related to current user"""
         user = self.request.user
-        return Supplier.objects.filter(ret=user)
+        return Supplier.objects.filter(ret=user).order_by('-id')
 
 
 class SupplierUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
@@ -99,6 +99,8 @@ class IncomeTransactionListCreateView(ListCreateAPIView):
 
         for cust in customerlist:
             userIncomeTrans = userIncomeTrans | cust.incometransaction_set.all()
+
+        userIncomeTrans = userIncomeTrans.order_by('-id')
 
         return userIncomeTrans
 
@@ -128,6 +130,8 @@ class ExpenseTransactionListCreateView(ListCreateAPIView):
 
         for sup in supplierlist:
             userExpTrans = userExpTrans | sup.expensetransaction_set.all()
+
+        userExpTrans = userExpTrans.order_by('-id')
 
         return userExpTrans
 
