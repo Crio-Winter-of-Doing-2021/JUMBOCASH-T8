@@ -128,6 +128,9 @@ class Supplier(models.Model):
 class IncomeTransaction(models.Model):
     """Model for cash inflow transaction entity"""
     trans_date_time  = models.DateTimeField(auto_now_add=True, blank=True)
+    tdate            = models.CharField(max_length=255, blank=True)
+    tmonth           = models.CharField(max_length=255, blank=True)
+    tyear            = models.CharField(max_length=255, blank=True)
     amount           = models.IntegerField()
     note             = models.CharField(max_length=255)
     description      = models.CharField(max_length=255, blank=True)
@@ -144,6 +147,9 @@ class IncomeTransaction(models.Model):
 class ExpenseTransaction(models.Model):
     """Model for cash outflow transaction entity"""
     trans_date_time  = models.DateTimeField(auto_now_add=True, blank=True)
+    tdate            = models.CharField(max_length=255, blank=True)
+    tmonth           = models.CharField(max_length=255, blank=True)
+    tyear            = models.CharField(max_length=255, blank=True)
     amount           = models.IntegerField()
     note             = models.CharField(max_length=255)
     description      = models.CharField(max_length=255, blank=True)
