@@ -36,7 +36,7 @@ backToTopButton.addEventListener("click", () => {
 let nav_profile = document.getElementById('nav-profile');
 
 const display_profile = (data) => {
-    nav_profile.innerHTML = `<a href="form.html" class="nav-link text-white">${data[0].firstname}
+    nav_profile.innerHTML = `<a href="profile.html" class="nav-link text-white">${data[0].firstname}
     </a>`
 }
 var tk = localStorage.getItem("token");
