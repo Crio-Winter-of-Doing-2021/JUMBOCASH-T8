@@ -58,7 +58,7 @@ save_btn.addEventListener("click", (e) => {
     let cust_num = document.getElementById('customer-number-input').value;
     let cust_email = document.getElementById('customer-email-input').value;
 
-    fetch("https://jumbocashapi.herokuapp.com/customers", {
+    fetch("https://jumbocashapi.herokuapp.com/customers/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
