@@ -34,7 +34,7 @@ const display_supplier = (data) => {
 
 }
 
-fetch("https://jumbocashapi.herokuapp.com/suppliers", {
+fetch("https://jumbocashapi.herokuapp.com/suppliers/", {
         method: 'GET',
         headers: { "Authorization": "Token " + p },
     })
@@ -57,7 +57,7 @@ sup_save.addEventListener("click", (e) => {
     let sup_num = document.getElementById('supplier-number-input').value;
     let sup_email = document.getElementById('supplier-email-input').value;
 
-    fetch("https://jumbocashapi.herokuapp.com/suppliers", {
+    fetch("https://jumbocashapi.herokuapp.com/suppliers/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
