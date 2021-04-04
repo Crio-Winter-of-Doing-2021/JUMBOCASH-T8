@@ -118,8 +118,8 @@ class ExpenseTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a ExpenseTransaction object"""
     #queryset            = ExpenseTransaction.objects.all()
     serializer_class    = ExpenseTransactionSerializer
-    filerset_fields      = ['id','trans_date_time', 'amount', 'note', \
-                       'payment_mode', 'payment_status', 'due_date', 'sup_id']
+    filterset_fields     = ['id','trans_date_time', 'amount', 'note', 'description', \
+                          'payment_mode', 'payment_status', 'due_date', 'sup_id']
 
     def get_queryset(self):
         """Returns only the objects related to current user"""
