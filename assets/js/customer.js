@@ -112,7 +112,7 @@ entity_table.addEventListener('click', (e) => {
     }
 
     if (edit_btn) {
-        income_save.style.display = 'none';
+        save_btn.style.display = 'none';
         update_btn.style.display = 'block';
         let firstname_edit = parent.parentElement.children[1].textContent.split(" ")[0];
         let lastname_edit = parent.parentElement.children[1].textContent.split(" ")[1];
