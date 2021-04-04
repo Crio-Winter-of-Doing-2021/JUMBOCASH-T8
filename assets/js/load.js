@@ -5,7 +5,7 @@ var p = JSON.parse(tk);
 console.log(p);
 console.log(typeof(p));
 
-fetch("https://jumbocashapi.herokuapp.com/jumbocashapi/", {
+fetch("https://jumbocashapi.herokuapp.com/retailers/profile/", {
         method: 'GET',
         headers: { "Authorization": "Token " + p },
     })

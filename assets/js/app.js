@@ -1,20 +1,13 @@
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container-2");
-const login_submit = document.querySelector("#login-submit");
+const login_submit = document.getElementById("login-submit");
 const signup_submit = document.querySelector("#signup-submit");
 
-sign_up_btn.addEventListener("click", () => {
-    container.classList.add("sign-up-mode");
-});
-
-sign_in_btn.addEventListener("click", () => {
-    container.classList.remove("sign-up-mode");
-});
 login_submit.addEventListener("click", (e) => {
-
-    let login_email = document.querySelector("#login-email").value;
-    let login_password = document.querySelector("#login-password").value;
+    console.log("click");
+    let login_email = document.getElementById("login-email").value;
+    let login_password = document.getElementById("login-password").value;
     fetch("https://jumbocashapi.herokuapp.com/login/", {
             method: "POST",
             headers: {
@@ -27,6 +20,7 @@ login_submit.addEventListener("click", (e) => {
         })
         .then((response) => {
             /* Error Handling */
+            console.log("ee");
             if (response.status === 400) {
                 throw Error(response.status);
             }
@@ -36,6 +30,7 @@ login_submit.addEventListener("click", (e) => {
         })
         .then((data) => {
             let tk = data.token;
+            console.log("jj");
             localStorage.setItem("token", JSON.stringify(tk));
             window.location.href = "https://jumbocashflow-app-t8.netlify.app/dashboard.html";
 
@@ -44,6 +39,14 @@ login_submit.addEventListener("click", (e) => {
             console.log(err);
         });
 
+});
+
+sign_up_btn.addEventListener("click", () => {
+    container.classList.add("sign-up-mode");
+});
+
+sign_in_btn.addEventListener("click", () => {
+    container.classList.remove("sign-up-mode");
 });
 
 signup_submit.addEventListener("click", (e) => {

@@ -6,8 +6,12 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+html {
+    height: 100vh;
+}
+
 body {
-    background-image: linear-gradient(to left bottom, #47b475, #3fa369, #38935e, #308353, #297348);
+    background-image: linear-gradient(130deg, #47b475, #3fa369, #38935e, #308353, #297348);
 }
 
 .wrapper {
