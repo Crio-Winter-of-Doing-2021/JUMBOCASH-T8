@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="assets/js/load.js"></script> -->
+    <script src="assets/js/load.js"></script>
     <meta name="description" content="Jumbotail | Cash Flow Management App">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
@@ -22,7 +22,10 @@
 
 </head>
 
-<body class="preload">
+<body>
+    <div class="forloader">
+        <div id="loader2"></div>
+    </div>
     <nav class="navbar navbar-expand-md nav-bg navbar-dark fixed-top">
 
         <a href="https://jumbotail.com/" class="navbar-brand text-warning font-weight-bold"><img src="assets/img/JumbotailLogo.png" alt=""></a>
@@ -93,6 +96,16 @@
         </div>
         <div class="nav__overlay"></div>
     </nav>
+    <div class="container filter">
+        <select class="custom-select filter-drop mt-3 mb-3" id="filter_mode">
+            <option selected>Payment Mode</option>
+            <option value="1">Cash</option>
+            <option value="2">Card</option>
+            <option value="3">UPI</option>
+            <option value="4">Other Online Mode </option>
+        </select>
+
+    </div>
     <!--Income Modal -->
     <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="incomeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -317,9 +330,11 @@
     </section>
 
     <button id="back-to-top-btn"><i class=" fas fa-angle-double-up"></i></button>
+
 </body>
 <script src="assets/js/dashboard.js"></script>
 <script src="assets/js/transaction.js"></script>
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -327,5 +342,10 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        $('.forloader').addClass('complete')
+    })
+</script>
 
 </html>

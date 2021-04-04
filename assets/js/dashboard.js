@@ -34,59 +34,20 @@ backToTopButton.addEventListener("click", () => {
 
 let nav_profile = document.getElementById('nav-profile');
 
-// const display_profile = (data) => {
-//     nav_profile.innerHTML = `<a href="form.html" class="nav-link text-white">${data[0].firstname}
-//     </a>`
-// }
-// var tk = localStorage.getItem("token");
+const display_profile = (data) => {
+    nav_profile.innerHTML = `<a href="form.html" class="nav-link text-white">${data[0].firstname}
+    </a>`
+}
+var tk = localStorage.getItem("token");
 
-// console.log(JSON.parse(tk));
-// var p = JSON.parse(tk);
+console.log(JSON.parse(tk));
+var p = JSON.parse(tk);
 
-// fetch("https://jumbocashapi.herokuapp.com/jumbocashapi/", {
-//         method: 'GET',
-//         headers: { "Authorization": "Token " + p },
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//         display_profile(data);
-//     });
-
-
-
-// //Income Form
-// let income_title = document.getElementById('income-text-input').value;
-// let income_due_date = document.getElementById('income-date-input').value;
-// let income_amount = document.getElementById('income-number-input').value;
-// let income_mode = document.getElementById('income_mode_select').selectedIndex;
-// let income_status = document.getElementById('income_status_select').selectedIndex;
-// let income_description = document.getElementById('income-Textarea').value;
-// let income_save = document.getElementById('income_save');
-
-// income_save.addEventListener("click", (e) => {
-//     e.preventDefault();
-
-//     fetch("https://jumbocashapi.herokuapp.com/jumbocashapi/incometransactions", {
-//             method: "POST",
-//             headers: {
-//                 "content-type": "application/json",
-//                 "Authorization": "Token " + p,
-//             },
-//             body: JSON.stringify({
-//                 name,
-//                 url,
-//                 caption,
-//             }),
-//         })
-//         .then((response) => {
-//             /* Error Handling */
-
-//             return response.json();
-//         })
-//         .then((data) => {
-//             window.location.reload()
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// });
+fetch("https://jumbocashapi.herokuapp.com/retailers/profile/", {
+        method: 'GET',
+        headers: { "Authorization": "Token " + p },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        display_profile(data);
+    });

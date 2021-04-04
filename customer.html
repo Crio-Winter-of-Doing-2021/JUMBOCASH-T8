@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="assets/js/load.js"></script> -->
+    <script src="assets/js/load.js"></script>
     <meta name="description" content="Jumbotail | Cash Flow Management App">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
@@ -20,7 +20,10 @@
 
 </head>
 
-<body class="preload">
+<body>
+    <div class="forloader">
+        <div id="loader2"></div>
+    </div>
     <nav class="navbar navbar-expand-md nav-bg navbar-dark fixed-top">
 
         <a href="https://jumbotail.com/" class="navbar-brand text-warning font-weight-bold"><img src="assets/img/JumbotailLogo.png" alt=""></a>
@@ -101,7 +104,7 @@
                 </tr>
             </thead>
             <tbody id="entity-table">
-               
+
 
             </tbody>
         </table>
@@ -161,7 +164,7 @@
         </div>
 
 
-        
+
     </section>
 
     <button id="back-to-top-btn"><i class=" fas fa-angle-double-up"></i></button>
@@ -176,5 +179,10 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        $('.forloader').addClass('complete')
+    })
+</script>
 
 </html>

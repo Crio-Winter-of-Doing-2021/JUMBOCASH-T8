@@ -36,7 +36,7 @@ const display_supplier = (data) => {
 
 fetch("https://jumbocashapi.herokuapp.com/suppliers", {
         method: 'GET',
-        headers: { "Authorization": "Token " + "ea84b10345b9e5329e65fa5b602105053c2654d2" },
+        headers: { "Authorization": "Token " + p },
     })
     .then((response) => response.json())
     .then((data) => {
@@ -61,7 +61,7 @@ sup_save.addEventListener("click", (e) => {
             method: "POST",
             headers: {
                 "content-type": "application/json",
-                "Authorization": "Token " + "ea84b10345b9e5329e65fa5b602105053c2654d2",
+                "Authorization": "Token " + p,
 
             },
             body: JSON.stringify({
@@ -103,7 +103,7 @@ entity_table.addEventListener('click', (e) => {
 
         fetch(`https://jumbocashapi.herokuapp.com/suppliers/${id}`, {
                 method: "DELETE",
-                headers: { "Authorization": "Token " + "ea84b10345b9e5329e65fa5b602105053c2654d2" },
+                headers: { "Authorization": "Token " + p },
             })
             .then(() => location.reload())
             .catch(err => console.log(err))
@@ -137,7 +137,7 @@ entity_table.addEventListener('click', (e) => {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",
-                    "Authorization": "Token " + "ea84b10345b9e5329e65fa5b602105053c2654d2",
+                    "Authorization": "Token " + p,
                 },
                 body: JSON.stringify({
                     firstname: firstname,

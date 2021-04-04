@@ -1,13 +1,8 @@
-var tk = localStorage.getItem("token");
-
-console.log(JSON.parse(tk));
-var p = JSON.parse(tk);
-let i = 1;
 let income_save = document.getElementById('income-save');
 let income_update = document.getElementById('income-update');
 let expense_save = document.getElementById('expense-save');
 let expense_update = document.getElementById('expense-update');
-
+let i = 1;
 const display_income = (data) => {
 
     data.forEach(income => {
@@ -103,26 +98,6 @@ fetch("https://jumbocashapi.herokuapp.com/expensetransactions", {
     });
 
 
-let side_nav = document.getElementById('side-nav');
-
-side_nav.addEventListener('click', (e) => {
-
-    let add_income = e.target.id == 'add_income';
-    if (add_income) {
-        income_save.style.display = 'block';
-        income_update.style.display = 'none';
-        document.getElementById('income_cust_select').removeAttribute('disabled', 'disabled');
-        document.getElementById('income_mode_select').removeAttribute('disabled', 'disabled');
-    }
-    let add_expense = e.target.id == 'add_expense';
-    if (add_expense) {
-        expense_save.style.display = 'block';
-        expense_update.style.display = 'none';
-        document.getElementById('expense_sup_select').removeAttribute('disabled', 'disabled');
-        document.getElementById('expense_mode_select').removeAttribute('disabled', 'disabled');
-    }
-
-})
 
 let cust_email = document.querySelector('.cust_email');
 
@@ -479,8 +454,9 @@ entity_table.addEventListener('click', (e) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+
                 display_cust_info(data);
+                console.log(data);
 
             });
         fetch(`https://jumbocashapi.herokuapp.com/incometransactions/${id}`, {
@@ -489,9 +465,9 @@ entity_table.addEventListener('click', (e) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
 
                 display_income_info(data);
+                console.log(data);
             });
 
 
@@ -505,7 +481,7 @@ entity_table.addEventListener('click', (e) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+
                 display_cust_info(data);
 
             });
@@ -515,7 +491,7 @@ entity_table.addEventListener('click', (e) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+
 
                 display_income_info(data);
             });
@@ -523,22 +499,3 @@ entity_table.addEventListener('click', (e) => {
     }
 
 })
-
-let filter = document.querySelector('.filter');
-
-filter.addEventListener('click', (e) => {
-    let filter_mode = document.getElementById('filter_mode').value;
-    console.log(filter_mode);
-    fetch(`https://jumbocashapi.herokuapp.com/incometransactions/?payment_mode=${filter_mode}`, {
-            method: 'GET',
-            headers: { "Authorization": "Token " + p },
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-
-            display_expense(data);
-
-        });
-
-});
