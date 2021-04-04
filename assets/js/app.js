@@ -15,7 +15,7 @@ login_submit.addEventListener("click", (e) => {
 
     let login_email = document.querySelector("#login-email").value;
     let login_password = document.querySelector("#login-password").value;
-    fetch("https://jumbocashapi.herokuapp.com/jumbocashapi/login/", {
+    fetch("https://jumbocashapi.herokuapp.com/login/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -53,7 +53,7 @@ signup_submit.addEventListener("click", (e) => {
     let number = document.getElementById("number").value;
     let password = document.getElementById("password").value;
 
-    fetch("https://jumbocashapi.herokuapp.com/jumbocashapi/register", {
+    fetch("https://jumbocashapi.herokuapp.com/register", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

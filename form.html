@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="assets/js/load.js"></script>
     <link rel="stylesheet" href="assets/css/form-style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <title>Profile</title>
 </head>
 
 <body>
-
+<div class="forloader">
+      <div id="loader2"></div> 
+    </div>
     <div class="wrapper">
         <div class="title">
             PROFILE
@@ -67,5 +70,9 @@
     </div>
 
 </body>
-
+<script> 
+        $(window).on('load',function(){
+         $('.forloader').addClass('complete')
+        })
+      </script>
 </html>
