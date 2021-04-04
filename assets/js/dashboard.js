@@ -1,5 +1,6 @@
 const logout = document.querySelector(".logout");
 logout.addEventListener("click", (e) => {
+    console.log(logout);
     localStorage.removeItem("token");
 })
 
