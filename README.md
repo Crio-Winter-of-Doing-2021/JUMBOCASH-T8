@@ -29,11 +29,19 @@ Cash Flow Management App is an application that enables small business owners to
 - **API Testing & Documentation**: Postman
 - **Version Control**: Git and GitHub
 - **Database**: PostgreSQL
+<<<<<<< HEAD
+
+=======
+>>>>>>> url-update
 - **Hosting**: Netlify, Heroku
 ## Links:
 
 - **Frontend**: [https://jumbocashflow-app-t8.netlify.app/](https://jumbocashflow-app-t8.netlify.app/)
 - **Backend**: [https://jumbocashapi.herokuapp.com/jumbocashapi/](https://jumbocashapi.herokuapp.com/jumbocashapi/)
+<<<<<<< HEAD
+
+=======
+>>>>>>> url-update
 
 #### GitHub Repository Structure
 
@@ -43,7 +51,10 @@ Cash Flow Management App is an application that enables small business owners to
 | 2. | [backend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/backend) | contains all backend code |
 | 3. | [frontend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/frontend) | contains all frontend code |
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> url-update
 ### Backend Setup Instructions
 
 - Fork and Clone the repo using
