@@ -176,11 +176,6 @@ nav img {
     opacity: 1;
 }
 
-.filter-drop {
-    float: right;
-    width: 23% !important;
-}
-
 .forloader {
     position: fixed;
     z-index: 99999;

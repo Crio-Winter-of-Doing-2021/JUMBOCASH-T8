@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse text-center " id="collapsenavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white">Dashboard
+                    <a href="dashboard.html" class="nav-link text-white">Dashboard
                         </a>
                 </li>
                 <li class="nav-item" id="nav-profile">
@@ -43,7 +43,7 @@
                         </a> -->
                 </li>
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link text-white" id="logout">Logout
+                    <a href="index.html" class="nav-link text-white logout">Logout
                         </a>
                 </li>
 
@@ -96,14 +96,26 @@
         </div>
         <div class="nav__overlay"></div>
     </nav>
-    <div class="container filter">
-        <select class="custom-select filter-drop mt-3 mb-3" id="filter_mode">
+
+    <div class=" row mr-0">
+        <div class="col-3 pl-4 ">
+            Start: <input class="form-control" type="date" id="start-date">
+        </div>
+        <div class="col-3 pl-4 ">
+            End: <input class="form-control" type="date" id="end-date">
+        </div>
+        <div class="col-2">
+            <select class="custom-select filter-drop mt-4" id="filter_mode">
             <option selected>Payment Mode</option>
             <option value="1">Cash</option>
             <option value="2">Card</option>
             <option value="3">UPI</option>
             <option value="4">Other Online Mode </option>
         </select>
+        </div>
+        <div class="col-2 pl-4 mt-4 filter ">
+            <button type="button" class="btn btn-secondary">Apply</button>
+        </div>
 
     </div>
     <!--Income Modal -->

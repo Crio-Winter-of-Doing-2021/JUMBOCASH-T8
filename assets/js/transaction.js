@@ -72,6 +72,7 @@ const display_expense = (data) => {
             expense.payment_status = 'Paid';
             dt = "-";
         }
+
         entity_table.innerHTML +=
             ` <tr data-id=${expense.id}>
                 <th scope="row">${i++}</th>
@@ -173,7 +174,10 @@ income_save.addEventListener("click", (e) => {
     let inc_status = document.getElementById('income_status_select').value;
     let inc_cust = document.getElementById('income_cust_select').value;
     let inc_desc = document.getElementById('income-Textarea').value;
-
+    var today = new Date();
+    let d = today.getDate();
+    let m = today.getMonth();
+    let y = today.getFullYear();
 
     fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
             method: "POST",
@@ -190,6 +194,9 @@ income_save.addEventListener("click", (e) => {
                 note: inc_title,
                 payment_mode: inc_mode,
                 payment_status: inc_status,
+                tdate: d,
+                tmonth: m,
+                tyear: y,
 
             }),
         })
@@ -220,6 +227,11 @@ expense_save.addEventListener("click", (e) => {
     let sup_status = document.getElementById('expense_status_select').value;
     let sup_sup = document.getElementById('expense_sup_select').value;
     let sup_desc = document.getElementById('expense-Textarea').value;
+    var today = new Date();
+    let sd = today.getDate();
+    let sm = today.getMonth();
+    let sy = today.getFullYear();
+
 
 
     fetch("https://jumbocashapi.herokuapp.com/expensetransactions", {
@@ -237,6 +249,10 @@ expense_save.addEventListener("click", (e) => {
                 note: sup_title,
                 payment_mode: sup_mode,
                 payment_status: sup_status,
+                tdate: sd,
+                tmonth: sm,
+                tyear: sy,
+
 
             }),
         })
@@ -523,21 +539,256 @@ entity_table.addEventListener('click', (e) => {
     }
 
 })
+const dis_filter_mode_exp = (data) => {
+    i = 1;
+    entity_table.innerHTML = '',
+        data.forEach(expense => {
+            var dt = expense.due_date;
+            if (expense.description == '') {
+                expense.description = 'Not provided';
+            }
+            if (expense.due_date == '') {
+                expense.due_date = 'Not provided';
+            }
+            if (expense.payment_status == 1) {
+                expense.payment_status = 'Pending';
+            }
+            if (expense.payment_status == 2) {
+                expense.payment_status = 'Paid';
+                dt = "-";
+            }
+
+            entity_table.innerHTML +=
+                ` <tr data-id=${expense.id}>
+                <th scope="row">${i++}</th>
+                <td>${expense.note}</td>
+                <td style="color:red;">- ${expense.amount}</td>
+                <td>${expense.trans_date_time.split('T')[0]}</td>
+                <td value=${expense.due_date}>${dt}</td>
+                <td>${expense.payment_status}</td>
+                <td>
+                    <i class="fas fa-edit " data-target="#expenseModal" data-toggle="modal"  id="expense-edit-btn"></i>
+                    <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${expense.sup_id}" id="expense_info"></i>
+                    <i class="fas fa-trash-alt ml-2" id="expense-delete-btn"></i>
+    
+                </td>
+    
+            </tr>`;
+        });
+
+}
+
+const dis_filter_mode_in = (data) => {
+
+    data.forEach(income => {
+        var dt = income.due_date;
+        if (income.description == '') {
+            income.description = 'Not provided';
+        }
+        if (income.due_date == '') {
+            income.due_date = 'Not provided';
+        }
+        if (income.payment_status == 1) {
+            income.payment_status = 'Pending';
+        }
+        if (income.payment_status == 2) {
+            income.payment_status = 'Received';
+            dt = '-';
+        }
+        entity_table.innerHTML +=
+            ` <tr data-id=${income.id}>
+            <th scope="row">${i++}</th>
+            <td>${income.note}</td>
+            <td style="color:green;">+ ${income.amount}</td>
+            <td>${income.trans_date_time.split('T')[0]}</td>
+            <td value=${income.due_date}>${dt}</td>
+            <td>${income.payment_status}</td>
+            <td>
+                <i class="fas fa-edit " data-target="#incomeModal" data-toggle="modal"  id="income-edit-btn"></i>
+                <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${income.cust_id}" id="income_info" ></i>
+                <i class="fas fa-trash-alt ml-2" id="income-delete-btn"></i>
+
+            </td>
+
+        </tr>`;
+    });
+
+}
 
 let filter = document.querySelector('.filter');
 
 filter.addEventListener('click', (e) => {
     let filter_mode = document.getElementById('filter_mode').value;
     console.log(filter_mode);
-    fetch(`https://jumbocashapi.herokuapp.com/incometransactions/?payment_mode=${filter_mode}`, {
+    if (filter_mode !== 'Payment Mode') {
+        console.log("mod")
+        fetch(`https://jumbocashapi.herokuapp.com/expensetransactions?payment_mode=${filter_mode}`, {
+                method: 'GET',
+                headers: { "Authorization": "Token " + p },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+
+                dis_filter_mode_exp(data);
+
+            });
+        fetch(`https://jumbocashapi.herokuapp.com/incometransactions?payment_mode=${filter_mode}`, {
+                method: 'GET',
+                headers: { "Authorization": "Token " + p },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+
+                dis_filter_mode_in(data);
+
+            });
+
+    }
+
+
+
+    let start_date = document.getElementById('start-date').value;
+    let end_date = document.getElementById('end-date').value;
+    let s_d = start_date.split('-')[2];
+    let s_m = start_date.split('-')[1];
+    let s_y = start_date.split('-')[0];
+    let e_d = end_date.split('-')[2];
+    let e_m = end_date.split('-')[1];
+    let e_y = end_date.split('-')[0];
+
+    dis_filter_date_exp = (data, index1, index2) => {
+        i = 1;
+
+        for (let itr = index1; itr < index2; itr++) {
+            var dt = data[itr].due_date;
+            if (data[itr].description == '') {
+                data[itr].description = 'Not provided';
+            }
+            if (data[itr].due_date == '') {
+                data[itr].due_date = 'Not provided';
+            }
+            if (data[itr].payment_status == 1) {
+                data[itr].payment_status = 'Pending';
+            }
+            if (data[itr].payment_status == 2) {
+                data[itr].payment_status = 'Paid';
+                dt = "-";
+            }
+            entity_table.innerHTML = '',
+                entity_table.innerHTML +=
+                ` <tr data-id=${data[itr].id}>
+                    <th scope="row">${i++}</th>
+                    <td>${data[itr].note}</td>
+                    <td style="color:red;">- ${data[itr].amount}</td>
+                    <td>${data[itr].trans_date_time.split('T')[0]}</td>
+                    <td value=${data[itr].due_date}>${dt}</td>
+                    <td>${data[itr].payment_status}</td>
+                    <td>
+                        <i class="fas fa-edit " data-target="#data[itr]Modal" data-toggle="modal"  id="data[itr]-edit-btn"></i>
+                        <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].sup_id}" id="data[itr]_info"></i>
+                        <i class="fas fa-trash-alt ml-2" id="data[itr]-delete-btn"></i>
+        
+                    </td>
+        
+                </tr>`;
+        }
+        console.log("ef");
+
+
+    }
+
+    dis_filter_date_inc = (data, index1, index2) => {
+
+        for (let itr = index1; itr < index2; itr++) {
+            var dt = data[itr].due_date;
+            if (data[itr].description == '') {
+                data[itr].description = 'Not provided';
+            }
+            if (data[itr].due_date == '') {
+                data[itr].due_date = 'Not provided';
+            }
+            if (data[itr].payment_status == 1) {
+                data[itr].payment_status = 'Pending';
+            }
+            if (data[itr].payment_status == 2) {
+                data[itr].payment_status = 'Received';
+                dt = '-';
+            }
+            entity_table.innerHTML +=
+                ` <tr data-id=${data[itr].id}>
+                <th scope="row">${i++}</th>
+                <td>${data[itr].note}</td>
+                <td style="color:green;">+ ${data[itr].amount}</td>
+                <td>${data[itr].trans_date_time.split('T')[0]}</td>
+                <td value=${data[itr].due_date}>${dt}</td>
+                <td>${data[itr].payment_status}</td>
+                <td>
+                    <i class="fas fa-edit " data-target="#data[itr]Modal" data-toggle="modal"  id="data[itr]-edit-btn"></i>
+                    <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].cust_id}" id="data[itr]_info" ></i>
+                    <i class="fas fa-trash-alt ml-2" id="data[itr]-delete-btn"></i>
+            
+                </td>
+            
+            </tr>`;
+        }
+        console.log("if");
+
+    }
+    const dis_filter_date = (data, start_date, end_date, ty) => {
+        console.log(data.length);
+        index1 = data.findIndex(x => x.trans_date_time.split('T')[0] === end_date);
+        index2 = data.findIndex(x => x.trans_date_time.split('T')[0] === start_date);
+        console.log(index1);
+
+        if (index1 == -1) {
+            for (let itr = 0; itr < data.length; itr++) {
+                if (data[itr].trans_date_time.split('T')[0] < end_date) {
+                    index1 = itr;
+                    break;
+                }
+            }
+
+        }
+        if (index2 == -1) {
+            for (let itr = index1; itr < data.length; itr++) {
+                if (data[itr].trans_date_time.split('T')[0] > start_date) {
+                    index2 = itr - 1;
+                    break;
+                }
+
+            }
+        }
+        if (ty == -1) {
+            dis_filter_date_exp(data, index1, index2);
+        } else {
+            dis_filter_date_inc(data, index1, index2);
+        }
+    }
+
+    fetch(`https://jumbocashapi.herokuapp.com/expensetransactions`, {
             method: 'GET',
             headers: { "Authorization": "Token " + p },
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            let ty = -1;
+            console.log("ex")
+            dis_filter_date(data, start_date, end_date, ty);
 
-            display_expense(data);
+
+        });
+    fetch(`https://jumbocashapi.herokuapp.com/incometransactions`, {
+            method: 'GET',
+            headers: { "Authorization": "Token " + p },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            let ty = 1;
+            console.log("in")
+            dis_filter_date(data, start_date, end_date, ty);
+
 
         });
 
