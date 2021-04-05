@@ -73,7 +73,7 @@ class RetailerManager(BaseUserManager):
 class Retailer(AbstractBaseUser, PermissionsMixin):
     """ Model for Retailer users """
     email           = models.EmailField(max_length=255, unique=True)
-    mobile_no       = models.CharField(max_length=10, unique=True)
+    mobile_no       = models.CharField(max_length=10, blank=True)
     firstname       = models.CharField(max_length=255)
     lastname        = models.CharField(max_length=255, blank=True)
     business_name   = models.CharField(max_length=255, blank=True)
