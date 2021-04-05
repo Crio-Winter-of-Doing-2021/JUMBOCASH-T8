@@ -29,4 +29,5 @@ urlpatterns = [
     path('register', views.RetailerCreateView.as_view()),
     path('login/', obtain_auth_token)
 
+
 ]
