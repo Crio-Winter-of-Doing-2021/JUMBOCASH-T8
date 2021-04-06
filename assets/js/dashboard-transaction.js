@@ -11,39 +11,38 @@ let cash_in = 0,
 
 
 const display_income = (data) => {
-
-    data.forEach(income => {
-        var dt = income.due_date;
-        if (income.description == '') {
-            income.description = 'Not provided';
+    for (let itr = 0; itr < 10; itr++) {
+        var dt = data[itr].due_date;
+        if (data[itr].description == '') {
+            data[itr].description = 'Not provided';
         }
-        if (income.due_date == '') {
-            income.due_date = 'Not provided';
+        if (data[itr].due_date == '') {
+            data[itr].due_date = 'Not provided';
         }
-        if (income.payment_status == 1) {
-            income.payment_status = 'Pending';
+        if (data[itr].payment_status == 1) {
+            data[itr].payment_status = 'Pending';
         }
-        if (income.payment_status == 2) {
-            income.payment_status = 'Received';
+        if (data[itr].payment_status == 2) {
+            data[itr].payment_status = 'Received';
             dt = '-';
         }
         entity_table.innerHTML +=
-            ` <tr data-id=${income.id}>
-            <th scope="row">${i++}</th>
-            <td>${income.note}</td>
-            <td style="color:green;">+ ${income.amount}</td>
-            <td>${income.trans_date_time.split('T')[0]}</td>
-            <td value=${income.due_date}>${dt}</td>
-            <td>${income.payment_status}</td>
-            <td>
-                <i class="fas fa-edit " data-target="#incomeModal" data-toggle="modal"  id="income-edit-btn"></i>
-                <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${income.cust_id}" id="income_info" ></i>
-                <i class="fas fa-trash-alt ml-2" id="income-delete-btn"></i>
-
-            </td>
-
-        </tr>`;
-    });
+            ` <tr data-id=${data[itr].id}>
+                <th scope="row">${i++}</th>
+                <td>${data[itr].note}</td>
+                <td style="color:green;">+ ${data[itr].amount}</td>
+                <td>${data[itr].trans_date_time.split('T')[0]}</td>
+                <td value=${data[itr].due_date}>${dt}</td>
+                <td>${data[itr].payment_status}</td>
+                <td>
+                    <i class="fas fa-edit " data-target="#data[itr]Modal" data-toggle="modal"  id="data[itr]-edit-btn"></i>
+                    <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].cust_id}" id="data[itr]_info" ></i>
+                    <i class="fas fa-trash-alt ml-2" id="data[itr]-delete-btn"></i>
+    
+                </td>
+    
+            </tr>`;
+    }
 
 }
 
@@ -62,39 +61,39 @@ fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
     });
 
 const display_expense = (data) => {
-
-    data.forEach(expense => {
-        var dt = expense.due_date;
-        if (expense.description == '') {
-            expense.description = 'Not provided';
+    for (let itr = 0; itr < 10; itr++) {
+        var dt = data[itr].due_date;
+        if (data[itr].description == '') {
+            data[itr].description = 'Not provided';
         }
-        if (expense.due_date == '') {
-            expense.due_date = 'Not provided';
+        if (data[itr].due_date == '') {
+            data[itr].due_date = 'Not provided';
         }
-        if (expense.payment_status == 1) {
-            expense.payment_status = 'Pending';
+        if (data[itr].payment_status == 1) {
+            data[itr].payment_status = 'Pending';
         }
-        if (expense.payment_status == 2) {
-            expense.payment_status = 'Paid';
+        if (data[itr].payment_status == 2) {
+            data[itr].payment_status = 'Paid';
             dt = "-";
         }
         entity_table.innerHTML +=
-            ` <tr data-id=${expense.id}>
-                <th scope="row">${i++}</th>
-                <td>${expense.note}</td>
-                <td style="color:red;">- ${expense.amount}</td>
-                <td>${expense.trans_date_time.split('T')[0]}</td>
-                <td value=${expense.due_date}>${dt}</td>
-                <td>${expense.payment_status}</td>
-                <td>
-                    <i class="fas fa-edit " data-target="#expenseModal" data-toggle="modal"  id="expense-edit-btn"></i>
-                    <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${expense.sup_id}" id="expense_info"></i>
-                    <i class="fas fa-trash-alt ml-2" id="expense-delete-btn"></i>
-    
-                </td>
-    
-            </tr>`;
-    });
+            ` <tr data-id=${data[itr].id}>
+                        <th scope="row">${i++}</th>
+                        <td>${data[itr].note}</td>
+                        <td style="color:red;">- ${data[itr].amount}</td>
+                        <td>${data[itr].trans_date_time.split('T')[0]}</td>
+                        <td value=${data[itr].due_date}>${dt}</td>
+                        <td>${data[itr].payment_status}</td>
+                        <td>
+                            <i class="fas fa-edit " data-target="#data[itr]Modal" data-toggle="modal"  id="data[itr]-edit-btn"></i>
+                            <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].sup_id}" id="data[itr]_info"></i>
+                            <i class="fas fa-trash-alt ml-2" id="data[itr]-delete-btn"></i>
+            
+                        </td>
+            
+                    </tr>`;
+    }
+
 
 }
 
