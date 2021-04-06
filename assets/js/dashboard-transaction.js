@@ -2,7 +2,14 @@ let income_save = document.getElementById('income-save');
 let income_update = document.getElementById('income-update');
 let expense_save = document.getElementById('expense-save');
 let expense_update = document.getElementById('expense-update');
+
 let i = 1;
+let balance = document.querySelector('.balance');
+let cash_in = 0,
+    cash_out = 0,
+    b = 0;
+
+
 const display_income = (data) => {
 
     data.forEach(income => {
@@ -47,7 +54,11 @@ fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
+        for (let itr = 0; itr < data.length; itr++) {
+            cash_in += data[itr].amount;
+        }
         display_income(data);
+
     });
 
 const display_expense = (data) => {
@@ -94,8 +105,27 @@ fetch("https://jumbocashapi.herokuapp.com/expensetransactions", {
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
+        for (let itr = 0; itr < data.length; itr++) {
+            cash_out += data[itr].amount;
+        }
         display_expense(data);
+        dis_balance();
+
     });
+const dis_balance = () => {
+    balance.innerHTML += `<div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+        <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH IN <br> ${cash_in}</div>
+        </div>
+        <div class=" mt-4 font-weight-bold text-lg mr-3"> - </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+        <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH OUT <br> ${cash_out}</div>
+        </div>
+        <div class=" mt-4 font-weight-bold text-lg mr-3"> = </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+        <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> BALANCE<br> ${cash_in-cash_out}</div>
+        
+        </div>`;
+}
 
 
 

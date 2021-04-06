@@ -42,6 +42,13 @@ nav img {
     margin-right: 5rem;
 }
 
+.inc-btn,
+.ex-btn {
+    margin-top: 6rem !important;
+    float: right;
+    margin-right: 5rem;
+}
+
 .sum-block {
     height: 6rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
