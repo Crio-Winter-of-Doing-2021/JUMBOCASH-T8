@@ -222,7 +222,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 LOGIN_REDIRECT_URL = '/retailers/profile/'
-ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/' 
+ACCOUNT_LOGOUT_REDIRECT_URL ='https://jumbocashflow-app-t8.netlify.app/dashboard' 
 
 #for heroku
 django_heroku.settings(locals())
