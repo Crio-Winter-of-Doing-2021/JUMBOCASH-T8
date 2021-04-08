@@ -53,7 +53,7 @@ class SupplierSerializer(serializers.ModelSerializer):
 
     class Meta:
         model       = models.Supplier
-        fields      = ['id', 'firstname', 'lastname', 'mobile_no', 'email_id','ret']
+        fields      = ['id', 'firstname', 'lastname', 'mobile_no','email_id', 'ret']
         read_only_fields = ['ret']
 
 class IncomeTransactionSerializer(serializers.ModelSerializer):
