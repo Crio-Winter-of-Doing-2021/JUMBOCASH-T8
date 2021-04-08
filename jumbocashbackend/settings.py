@@ -51,27 +51,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'multiple_permissions',
     'django_filters',
-    'django.contrib.sites',
      #apps
      'corsheaders',
      'jumbocashapi',
-
-     #all auth
-
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-]
-
-
-AUTHENTICATION_BACKENDS = [
- 
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 
@@ -198,32 +180,5 @@ AUTH_USER_MODEL = 'jumbocashapi.Retailer'
 CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
 
-
-SITE_ID = 2
-
-# Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '868441464956-tokq3gth8g2h25oqi34fuabpan1f5u6l.apps.googleusercontent.com',
-            'secret': 'fnJJNF7BLSpYi3LI6qDRbI9p',
-            'key': ''
-        }
-    }
-}
-
-# Allauth settings
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-LOGIN_REDIRECT_URL = '/retailers/profile/'
-ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/' 
-
 #for heroku
 django_heroku.settings(locals())
-
