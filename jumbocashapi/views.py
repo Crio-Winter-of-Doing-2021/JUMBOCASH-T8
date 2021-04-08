@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from .permissions import (RetailerPermission, CustomerSupplierPermission, IncomeTransactionPermission,
                             ExpenseTransactionPermission)
 
-from .filters import IncomeTransactionFilter                         
+from .filters import IncomeTransactionFilter, ExpenseTransactionFilter                        
 import requests
  
 class RetailerListView(ListAPIView):
@@ -87,8 +87,6 @@ class IncomeTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a IncomeTransaction object"""
     #queryset            = IncomeTransaction.objects.all()
     serializer_class    = IncomeTransactionSerializer
-    filterset_fields    = ['id','trans_date_time', 'amount', 'note', \
-                       'payment_mode', 'payment_status', 'due_date', 'cust_id', 'tdate', 'tmonth', 'tyear']
     filter_class        = IncomeTransactionFilter
 
 
@@ -121,8 +119,7 @@ class ExpenseTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a ExpenseTransaction object"""
     #queryset            = ExpenseTransaction.objects.all()
     serializer_class    = ExpenseTransactionSerializer
-    filterset_fields     = ['id','trans_date_time', 'amount', 'note', 'description', \
-                          'payment_mode', 'payment_status', 'due_date', 'sup_id', 'tdate', 'tmonth', 'tyear']
+    filter_class        = ExpenseTransactionFilter
 
     def get_queryset(self):
         """Returns only the objects related to current user"""
