@@ -1,3 +1,4 @@
+debugger;
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container-2");
@@ -8,6 +9,7 @@ login_submit.addEventListener("click", (e) => {
     console.log("click");
     let login_email = document.getElementById("login-email").value;
     let login_password = document.getElementById("login-password").value;
+
     fetch("https://jumbocashapi.herokuapp.com/login/", {
             method: "POST",
             headers: {
