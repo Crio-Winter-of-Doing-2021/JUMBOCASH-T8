@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="assets/js/load.js"></script>
+    <!-- <script src="assets/js/load.js"></script> -->
     <meta name="description" content="Jumbotail | Cash Flow Management App">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
@@ -98,14 +98,29 @@
         <div class="nav__overlay"></div>
     </nav>
 
-    <div class=" row mr-0">
-        <div class="col-3 pl-4 ">
+    <div class=" row mr-0 ml-1">
+        <div class="col-lg-1 col-md-3">
+            <select class="custom-select filter-drop mt-4" id="filter_trans">
+            <option selected>Transaction</option>
+            <option value="1">Income</option>
+            <option value="2">Expense</option>
+         </select>
+        </div>
+        <div class="col-lg-2  col-md-3">
             Start: <input class="form-control" type="date" id="start-date">
         </div>
-        <div class="col-3 pl-4 ">
+        <div class="col-lg-2 col-md-3">
             End: <input class="form-control" type="date" id="end-date">
         </div>
-        <div class="col-2">
+        <div class="col-lg-2 col-md-3">
+            Start: <input class="form-control" type="number" id="start_amount" placeholder="Enter Amount">
+        </div>
+        <div class="col-lg-2 col-md-3">
+            End: <input class="form-control" type="number" id="end_amount" placeholder="Enter Amount">
+        </div>
+
+
+        <div class="col-lg-2 col-md-3">
             <select class="custom-select filter-drop mt-4" id="filter_mode">
             <option selected>Payment Mode</option>
             <option value="1">Cash</option>
@@ -114,7 +129,8 @@
             <option value="4">Other Online Mode </option>
         </select>
         </div>
-        <div class="col-2 pl-4 mt-4 filter ">
+
+        <div class="col-lg-1 col-md-3 mt-4 filter ">
             <button type="button" class="btn btn-secondary">Apply</button>
         </div>
 
@@ -286,7 +302,7 @@
 
 
     <section class="container-fluid mt-5 mb-5">
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive-sm ">
             <thead>
                 <tr>
                     <th scope="col">S.No</th>
@@ -294,6 +310,7 @@
                     <th scope="col">Amount</th>
                     <th scope="col">Transaction Date</th>
                     <th scope="col">Due Date</th>
+                    <th scope="col">Payment Mode</th>
                     <th scope="col">Payment Status</th>
                     <th></th>
 

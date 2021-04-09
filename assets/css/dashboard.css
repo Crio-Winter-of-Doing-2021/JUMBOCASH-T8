@@ -287,3 +287,93 @@ nav img {
         height: 0;
     }
 }
+
+@media (max-width: 566px) {
+    .income-btn,
+    .expense-btn {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1002px) {
+    #myChart {
+        height: 40rem !important;
+        width: 40rem !important;
+    }
+}
+
+@media (max-width: 425px) {
+    #myChart {
+        height: 20rem !important;
+        width: 25rem !important;
+    }
+    .inc-btn,
+    .ex-btn {
+        margin-top: 6rem !important;
+        float: right;
+        margin-right: 2rem;
+    }
+    .ex-btn {
+        margin-right: 2px;
+    }
+}
+
+@media (max-width: 375px) {
+    #myChart {
+        height: 20rem !important;
+        width: 25rem !important;
+    }
+    .con-chart {
+        overflow-x: scroll;
+    }
+    .inc-btn,
+    .ex-btn {
+        margin-top: 6rem !important;
+        float: right;
+        font-size: 14px;
+    }
+    .ex-btn {
+        margin-right: 2px;
+    }
+    .heading {
+        margin-top: 5.5rem;
+        padding: 0.5rem;
+        padding-left: 4rem;
+        position: absolute;
+        font-size: 1.7rem;
+    }
+    .material-icons {
+        font-size: 25px !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .inc-btn,
+    .ex-btn {
+        margin-top: 6rem !important;
+        float: right;
+        font-size: 10px;
+    }
+    .ex-btn {
+        margin-right: 2px;
+    }
+    .heading {
+        margin-top: 5.5rem;
+        padding: 0.5rem;
+        padding-left: 3rem;
+        position: absolute;
+        font-size: 1.5rem;
+    }
+    .material-icons {
+        font-size: 20px !important;
+    }
+    .bar {
+        height: 8.5rem;
+    }
+    nav img {
+        height: 2rem;
+    }
+    .navbar-toggler {
+        font-size: 1rem;
+    }
+}
