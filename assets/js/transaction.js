@@ -578,6 +578,13 @@ filter.addEventListener('click', (e) => {
             if (filter_mode === 'Payment Mode') {
                 filter_mode = '';
             }
+            if (end_date !== '') {
+                let s = end_date.split('-');
+                var nd = parseInt(s[2]) + 1;
+                s[2] = nd.toString();
+                end_date = s.join('-');
+
+            }
 
             fetch(`https://jumbocashapi.herokuapp.com/incometransactions?amount_gt=${start_amt}&amount_lt=${end_amt}&trans_date_gt=${start_date}&trans_date_lt=${end_date}&payment_mode=${filter_mode}`, {
                     method: 'GET',
@@ -595,7 +602,13 @@ filter.addEventListener('click', (e) => {
             if (filter_mode === 'Payment Mode') {
                 filter_mode = '';
             }
+            if (end_date !== '') {
+                let s = end_date.split('-');
+                var nd = parseInt(s[2]) + 1;
+                s[2] = nd.toString();
+                end_date = s.join('-');
 
+            }
             fetch(`https://jumbocashapi.herokuapp.com/expensetransactions?amount_gt=${start_amt}&amount_lt=${end_amt}&trans_date_gt=${start_date}&trans_date_lt=${end_date}&payment_mode=${filter_mode}`, {
                     method: 'GET',
                     headers: { "Authorization": "Token " + p },
