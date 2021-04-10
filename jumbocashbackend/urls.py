@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('jumbocashapi.urls'))
+    path('', include('jumbocashapi.urls')),
+    path('social/login/', include('rest_social_auth.urls_token')),
 ]

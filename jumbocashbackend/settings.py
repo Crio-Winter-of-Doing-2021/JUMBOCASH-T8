@@ -49,10 +49,26 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'multiple_permissions',
     'django_filters',
-     #apps
-     'corsheaders',
-     'jumbocashapi',
+    #apps
+    'corsheaders',
+    'jumbocashapi',
+
+    #social-auth
+    'social_django',  # django social auth
+    'rest_social_auth',  # this package
 ]
+
+######Google Auth#########
+
+SOCIAL_AUTH_GOOGLE_OAUTH_KEY = '868441464956-tokq3gth8g2h25oqi34fuabpan1f5u6l.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH_SECRET = 'fnJJNF7BLSpYi3LI6qDRbI9p'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    # and maybe some others ...
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 REST_FRAMEWORK = {
