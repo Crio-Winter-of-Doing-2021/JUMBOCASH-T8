@@ -191,7 +191,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://127.0.0.1:5501",
-    "https://jumbocashflow-app-t8.netlify.app/",
+    "https://jumbocashflow-app-t8.netlify.app",
 ]
 
 CORS_ALLOW_METHODS = [
