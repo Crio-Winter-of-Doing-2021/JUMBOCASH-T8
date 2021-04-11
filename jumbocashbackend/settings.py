@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = '2g-v_!ecr*k!$w_*wxfc8hc3&&180cga3km9jv4pxhx&vxywce'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -93,6 +95,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'multiple_permissions.middlewares.PermissionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'jumbocashbackend.urls'
@@ -120,19 +123,22 @@ WSGI_APPLICATION = 'jumbocashbackend.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # heroku-postgres
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2enpki0al8jhh',
-        'USER': 'lshekmsekgcvym',
-        'PASSWORD':'b8408c6f6dab3804ca7f092ae5dc41f3b3042f7ba7735dd7d741b6f4b95c41f7',
-        'HOST':'ec2-54-164-241-193.compute-1.amazonaws.com',
+        'NAME': 'dnubsc7cdur4s',
+        'USER': 'diwkseamkiqchq',
+        'PASSWORD':'d5512cb35c7d04e8d76874c8ad8a9faa5c27ec5e726df43979fe5ff350f6261e',
+        'HOST':'ec2-54-145-102-149.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }
-'''
 
+
+
+
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -143,7 +149,7 @@ DATABASES = {
         'PORT':'5432'
     }
 }
-
+'''
 
 
 # Password validation
@@ -182,12 +188,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'jumbocashapi.Retailer'
 
 #CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://127.0.0.1:5501",
@@ -214,3 +222,9 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+
+
+
+#for heroku
+django_heroku.settings(locals())
+
