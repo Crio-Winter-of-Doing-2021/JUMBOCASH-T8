@@ -11,7 +11,11 @@ let cash_in = 0,
 
 
 const display_income = (data) => {
-    for (let itr = 0; itr < 10; itr++) {
+    let limit = 5;
+    if (data.length < 5) {
+        limit = data.length;
+    }
+    for (let itr = 0; itr < limit; itr++) {
         var dt = data[itr].due_date;
         if (data[itr].description == '') {
             data[itr].description = 'Not provided';
@@ -35,9 +39,9 @@ const display_income = (data) => {
                 <td value=${data[itr].due_date}>${dt}</td>
                 <td>${data[itr].payment_status}</td>
                 <td>
-                    <i class="fas fa-edit " data-target="#data[itr]Modal" data-toggle="modal"  id="data[itr]-edit-btn"></i>
-                    <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].cust_id}" id="data[itr]_info" ></i>
-                    <i class="fas fa-trash-alt ml-2" id="data[itr]-delete-btn"></i>
+                    <i class="fas fa-edit " data-target="#incomeModal" data-toggle="modal"  id="income-edit-btn"></i>
+                    <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].cust_id}" id="income_info" ></i>
+                    <i class="fas fa-trash-alt ml-2" id="income-delete-btn"></i>
     
                 </td>
     
@@ -46,22 +50,14 @@ const display_income = (data) => {
 
 }
 
-fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
-        method: 'GET',
-        headers: { "Authorization": "Token " + p },
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        for (let itr = 0; itr < data.length; itr++) {
-            cash_in += data[itr].amount;
-        }
-        display_income(data);
 
-    });
 
 const display_expense = (data) => {
-    for (let itr = 0; itr < 10; itr++) {
+    let limit = 5;
+    if (data.length < 5) {
+        limit = data.length;
+    }
+    for (let itr = 0; itr < limit; itr++) {
         var dt = data[itr].due_date;
         if (data[itr].description == '') {
             data[itr].description = 'Not provided';
@@ -85,9 +81,9 @@ const display_expense = (data) => {
                         <td value=${data[itr].due_date}>${dt}</td>
                         <td>${data[itr].payment_status}</td>
                         <td>
-                            <i class="fas fa-edit " data-target="#data[itr]Modal" data-toggle="modal"  id="data[itr]-edit-btn"></i>
-                            <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].sup_id}" id="data[itr]_info"></i>
-                            <i class="fas fa-trash-alt ml-2" id="data[itr]-delete-btn"></i>
+                            <i class="fas fa-edit " data-target="#expenseModal" data-toggle="modal"  id="expense-edit-btn"></i>
+                            <i class="fas fa-align-justify ml-2" data-target="#more-info" data-toggle="modal" value="${data[itr].sup_id}" id="expense_info"></i>
+                            <i class="fas fa-trash-alt ml-2" id="expense-delete-btn"></i>
             
                         </td>
             
@@ -97,32 +93,41 @@ const display_expense = (data) => {
 
 }
 
-fetch("https://jumbocashapi.herokuapp.com/expensetransactions", {
+
+Promise.all([
+    fetch(`https://jumbocashapi.herokuapp.com/incometransactions`, {
         method: 'GET',
         headers: { "Authorization": "Token " + p },
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        for (let itr = 0; itr < data.length; itr++) {
-            cash_out += data[itr].amount;
-        }
-        display_expense(data);
-        dis_balance();
+    }).then(value => value.json()),
+    fetch(`https://jumbocashapi.herokuapp.com/expensetransactions`, {
+        method: 'GET',
+        headers: { "Authorization": "Token " + p },
+    }).then(value => value.json())
+]).then((value) => {
 
-    });
+    display_income(value[0]);
+    display_expense(value[1]);
+    for (let itr = 0; itr < value[0].length; itr++) {
+        cash_in += value[0][itr].amount;
+    }
+    for (let itr = 0; itr < value[1].length; itr++) {
+        cash_out += value[1][itr].amount;
+    }
+    dis_balance();
+    //json response
+})
 const dis_balance = () => {
-    balance.innerHTML += `<div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+    balance.innerHTML += `<div class="col-lg-3 col-md-3 col-sm-3 col-10 d-block m-auto">
         <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH IN <br> ${cash_in}</div>
         </div>
         <div class=" mt-4 font-weight-bold text-lg mr-3"> - </div>
-        <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-10 d-block m-auto">
         <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH OUT <br> ${cash_out}</div>
         </div>
         <div class=" mt-4 font-weight-bold text-lg mr-3"> = </div>
-        <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
-        <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> BALANCE<br> ${cash_in-cash_out}</div>
-        
+        <div class="col-lg-3 col-md-3   col-sm-auto  col-10 d-block m-auto">
+        <div class="sum-block d-block mx-auto  my-2  p-4 font-weight-bold"> BALANCE<br> ${cash_in-cash_out}</div>
+      
         </div>`;
 }
 
@@ -285,6 +290,7 @@ entity_table.addEventListener('click', (e) => {
             .catch(err => console.log(err))
 
     }
+
 
     if (inc_edit_btn) {
         income_save.style.display = 'none';
@@ -475,55 +481,48 @@ entity_table.addEventListener('click', (e) => {
     }
 
     if (income_info) {
+
         let inc_info_id = e.target.parentElement.children[1].getAttribute('value');
         console.log(inc_info_id);
-        fetch(`https://jumbocashapi.herokuapp.com/customers/${inc_info_id}`, {
-                method: 'GET',
-                headers: { "Authorization": "Token " + p },
-            })
-            .then((response) => response.json())
-            .then((data) => {
+        Promise.all([
+                fetch(`https://jumbocashapi.herokuapp.com/customers/${inc_info_id}`, {
+                    method: 'GET',
+                    headers: { "Authorization": "Token " + p },
+                }).then(value => value.json()),
+                fetch(`https://jumbocashapi.herokuapp.com/incometransactions/${id}`, {
+                    method: 'GET',
+                    headers: { "Authorization": "Token " + p },
+                }).then(value => value.json())
+            ])
+            .then((value) => {
+                display_cust_info(value[0]);
+                display_income_info(value[1]);
 
-                display_cust_info(data);
-                console.log(data);
 
-            });
-        fetch(`https://jumbocashapi.herokuapp.com/incometransactions/${id}`, {
-                method: 'GET',
-                headers: { "Authorization": "Token " + p },
-            })
-            .then((response) => response.json())
-            .then((data) => {
-
-                display_income_info(data);
-                console.log(data);
             });
 
 
     }
     if (expense_info) {
         let exp_info_id = e.target.parentElement.children[1].getAttribute('value');
-        console.log("ll");
-        fetch(`https://jumbocashapi.herokuapp.com/suppliers/${exp_info_id}`, {
-                method: 'GET',
-                headers: { "Authorization": "Token " + p },
-            })
-            .then((response) => response.json())
-            .then((data) => {
+        Promise.all([
+                fetch(`https://jumbocashapi.herokuapp.com/suppliers/${exp_info_id}`, {
+                    method: 'GET',
+                    headers: { "Authorization": "Token " + p },
+                }).then(value => value.json()),
+                fetch(`https://jumbocashapi.herokuapp.com/expensetransactions/${id}/`, {
+                    method: 'GET',
+                    headers: { "Authorization": "Token " + p },
+                }).then(value => value.json())
+            ])
+            .then((value) => {
+                display_cust_info(value[0]);
+                display_income_info(value[1]);
 
-                display_cust_info(data);
 
             });
-        fetch(`https://jumbocashapi.herokuapp.com/expensetransactions/${id}/`, {
-                method: 'GET',
-                headers: { "Authorization": "Token " + p },
-            })
-            .then((response) => response.json())
-            .then((data) => {
 
 
-                display_income_info(data);
-            });
 
     }
 

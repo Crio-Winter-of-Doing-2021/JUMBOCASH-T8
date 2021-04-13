@@ -43,7 +43,15 @@ const display_profile = (data) => {
      <td>:</td>
      <td>${data[0].pincode}</td>
  </tr>
-</tbody></table>
+ <tr>
+ <td></td>
+ <td></td>
+<td> <a type="button" href="form.html" style="float:right;" class="btn btn-dark" role="button" >Update</a></td>
+
+ </tr>
+</tbody>
+
+</table>
 
 
 `
