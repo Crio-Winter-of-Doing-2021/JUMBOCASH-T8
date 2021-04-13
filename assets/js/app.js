@@ -5,6 +5,7 @@ const login_submit = document.getElementById("login-submit");
 const signup_submit = document.querySelector("#signup-submit");
 
 login_submit.addEventListener("click", (e) => {
+    e.preventDefault();
     console.log("click");
     let login_email = document.getElementById("login-email").value;
     let login_password = document.getElementById("login-password").value;
