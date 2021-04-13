@@ -6,6 +6,7 @@ const signup_submit = document.querySelector("#signup-submit");
 
 login_submit.addEventListener("click", (e) => {
     console.log("click");
+    e.preventDefault();
     let login_email = document.getElementById("login-email").value;
     let login_password = document.getElementById("login-password").value;
     fetch("https://jumbocashapi.herokuapp.com/login/", {
