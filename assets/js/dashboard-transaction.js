@@ -11,7 +11,7 @@ let cash_in = 0,
 
 
 const display_income = (data) => {
-    for (let itr = 0; itr < 5; itr++) {
+    for (let itr = 0; itr < 10; itr++) {
         var dt = data[itr].due_date;
         if (data[itr].description == '') {
             data[itr].description = 'Not provided';
@@ -61,7 +61,7 @@ fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
     });
 
 const display_expense = (data) => {
-    for (let itr = 0; itr < 5; itr++) {
+    for (let itr = 0; itr < 10; itr++) {
         var dt = data[itr].due_date;
         if (data[itr].description == '') {
             data[itr].description = 'Not provided';
@@ -103,7 +103,7 @@ fetch("https://jumbocashapi.herokuapp.com/expensetransactions", {
     })
     .then((response) => response.json())
     .then((data) => {
-
+        console.log(data);
         for (let itr = 0; itr < data.length; itr++) {
             cash_out += data[itr].amount;
         }
@@ -112,15 +112,15 @@ fetch("https://jumbocashapi.herokuapp.com/expensetransactions", {
 
     });
 const dis_balance = () => {
-    balance.innerHTML += `<div class="col-lg-3 col-md-2 col-sm-3 col-10 d-block m-auto">
+    balance.innerHTML += `<div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
         <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH IN <br> ${cash_in}</div>
         </div>
         <div class=" mt-4 font-weight-bold text-lg mr-3"> - </div>
-        <div class="col-lg-3 col-md-2 col-sm-3 col-10 d-block m-auto">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
         <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold "> CASH OUT <br> ${cash_out}</div>
         </div>
         <div class=" mt-4 font-weight-bold text-lg mr-3"> = </div>
-        <div class="col-lg-3 col-md-2 col-sm-3 col-10 d-block m-auto">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-10 d-block m-auto">
         <div class="sum-block d-block mx-2 my-2  p-4 font-weight-bold"> BALANCE<br> ${cash_in-cash_out}</div>
         
         </div>`;
