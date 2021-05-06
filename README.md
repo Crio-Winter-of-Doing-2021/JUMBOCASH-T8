@@ -17,6 +17,10 @@ Cash Flow Management App is an application that enables small business owners to
 - Users can see a dashboard of all transactions with an overall cash flow summary.
 
 - Users can filter on a specific entity to see all of their transactions with that entity.
+- 
+## Demo Video:
+
+<a href="https://youtu.be/6yEJ95kmRPU"> <img src="https://user-images.githubusercontent.com/55245862/117311726-15496a80-aea2-11eb-96e1-a066dd0e1ed7.png" alt="Demo Video" height='250' width='430'/> </a>
 
 ## Technology Stack to be used:
 
