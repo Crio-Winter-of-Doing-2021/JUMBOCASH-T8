@@ -1,9 +1,7 @@
 var tk = localStorage.getItem("token");
 
-console.log(JSON.parse(tk));
 var p = JSON.parse(tk);
-console.log(p);
-console.log(typeof(p));
+// console.log(p);
 
 fetch("https://jumbocashapi.herokuapp.com/retailers/profile/", {
         method: 'GET',
@@ -17,7 +15,7 @@ fetch("https://jumbocashapi.herokuapp.com/retailers/profile/", {
             throw Error(response.status);
 
         }
-        console.log(response.status);
+        // console.log(response.status);
         return response.json();
     })
     .catch((err) => {
