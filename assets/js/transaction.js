@@ -1,6 +1,6 @@
 var tk = localStorage.getItem("token");
 
-console.log(JSON.parse(tk));
+// console.log(JSON.parse(tk));
 var p = JSON.parse(tk);
 let i = 1;
 let income_save = document.getElementById('income-save');
@@ -11,7 +11,7 @@ let pay_mode = ['h', 'Cash', 'Card', 'UPI', 'Others']
 const display_income = (data, f) => {
 
     if (f === 1) {
-        console.log("o")
+        // console.log("o")
         entity_table.innerHTML = "";
         i = 1;
     }
@@ -183,9 +183,10 @@ income_save.addEventListener("click", (e) => {
     let inc_desc = document.getElementById('income-Textarea').value;
     var today = new Date();
     let d = today.getDate();
-    let m = today.getMonth();
+    let m = today.getMonth() + 1;
     let y = today.getFullYear();
 
+    console.log(m);
     fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
             method: "POST",
             headers: {
@@ -336,7 +337,7 @@ entity_table.addEventListener('click', (e) => {
         }
         document.getElementById('income_status_select').value = status_edit;
 
-        console.log(id);
+        // console.log(id);
 
 
     }
@@ -348,7 +349,7 @@ entity_table.addEventListener('click', (e) => {
         let amt = document.getElementById('income-number-input').value;
         let status = document.getElementById('income_status_select').value;
         let desc = document.getElementById('income-Textarea').value;
-        console.log(date)
+        // console.log(date)
         if (status == 'Pending') {
             status = '1';
         }
@@ -399,7 +400,6 @@ entity_table.addEventListener('click', (e) => {
         expense_update.style.display = 'block';
         document.getElementById('expense_sup_select').setAttribute('disabled', 'disabled');
         document.getElementById('expense_mode_select').setAttribute('disabled', 'disabled');
-        console.log(e.target.parentElement.parentElement);
         let title_edit = e.target.parentElement.parentElement.children[1].textContent;
         let amt_edit = e.target.parentElement.parentElement.children[2].textContent.split(" ")[1];
         let date_edit = e.target.parentElement.parentElement.children[4].getAttribute('value');
@@ -429,7 +429,6 @@ entity_table.addEventListener('click', (e) => {
         let amt = document.getElementById('expense-number-input').value;
         let status = document.getElementById('expense_status_select').value;
         let desc = document.getElementById('expense-Textarea').value;
-        console.log(date)
         if (status == 'Pending') {
             status = '1';
         }
@@ -467,8 +466,8 @@ entity_table.addEventListener('click', (e) => {
     let income_info = e.target.id == 'income_info';
     let expense_info = e.target.id == 'expense_info';
     pty_mode = ['k', 'Cash', 'Card', 'UPI', 'Other Online Mode']
-    console.log(income_info);
-    console.log(expense_info);
+        // console.log(income_info);
+        // console.log(expense_info);
     const display_cust_info = (data) => {
         info_body.innerHTML = '',
             info_body.innerHTML += `<div class="form-group row">
@@ -504,7 +503,6 @@ entity_table.addEventListener('click', (e) => {
     if (income_info) {
 
         let inc_info_id = e.target.parentElement.children[1].getAttribute('value');
-        console.log(inc_info_id);
         Promise.all([
                 fetch(`https://jumbocashapi.herokuapp.com/customers/${inc_info_id}`, {
                     method: 'GET',
@@ -561,7 +559,7 @@ filter.addEventListener('click', (e) => {
     let end_date = document.getElementById('end-date').value;
     let filter_status = document.getElementById('filter_status').value;
     let filter_amt = document.getElementById('filter_amt').value;
-    console.log(filter_status);
+    // console.log(filter_status);
 
     if (end_date !== '') {
         let s = end_date.split('-');
@@ -607,7 +605,7 @@ filter.addEventListener('click', (e) => {
 
     }
     if ((filter_trans == 2 || filter_status === '3') && filter_status !== '2') {
-        console.log(filter_status)
+        // console.log(filter_status)
         let fs = filter_status;
         if (filter_status === '3') {
             fs = 2;
@@ -643,7 +641,7 @@ filter.addEventListener('click', (e) => {
             });
     }
     if ((filter_trans == 3 || filter_status === '1') && filter_status !== '3' && filter_status !== '2' && filter_trans != 1 && filter_trans != 2) {
-        console.log(filter_status)
+        // console.log(filter_status)
         if (filter_mode === 'Payment Mode') {
             filter_mode = '';
         }
@@ -664,7 +662,6 @@ filter.addEventListener('click', (e) => {
                     headers: { "Authorization": "Token " + p },
                 }).then(value => value.json())
             ]).then((value) => {
-                console.log(value)
                 display_income(value[0], 1);
                 display_expense(value[1], 0);
                 //json response
