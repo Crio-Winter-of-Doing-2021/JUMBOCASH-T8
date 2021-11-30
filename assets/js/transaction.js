@@ -186,7 +186,6 @@ income_save.addEventListener("click", (e) => {
     let m = today.getMonth() + 1;
     let y = today.getFullYear();
 
-    console.log(m);
     fetch("https://jumbocashapi.herokuapp.com/incometransactions", {
             method: "POST",
             headers: {
@@ -237,7 +236,7 @@ expense_save.addEventListener("click", (e) => {
     let sup_desc = document.getElementById('expense-Textarea').value;
     var today = new Date();
     let sd = today.getDate();
-    let sm = today.getMonth();
+    let sm = today.getMonth() + 1;
     let sy = today.getFullYear();
 
 
@@ -662,6 +661,7 @@ filter.addEventListener('click', (e) => {
                     headers: { "Authorization": "Token " + p },
                 }).then(value => value.json())
             ]).then((value) => {
+                // console.log(value)
                 display_income(value[0], 1);
                 display_expense(value[1], 0);
                 //json response
