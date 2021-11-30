@@ -1,15 +1,15 @@
 let inc_btn = document.querySelector('.inc-btn');
 let ex_btn = document.querySelector('.ex-btn');
-let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 const cal_graph = (data) => {
+    let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     for (let itr = 0; itr < data.length; itr++) {
         arr[data[itr].tmonth] += data[itr].amount;
     }
-
+    return arr;
 }
-const graph = (ty) => {
+const graph = (ty, arr) => {
     var ctx = document.getElementById('myChart').getContext('2d');
     let lb;
     if (ty == 1) {
@@ -77,9 +77,10 @@ inc_btn.addEventListener('click', (e) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            cal_graph(data);
-            graph(1);
+            // console.log(data);
+            // console.log('inc');
+            arr = cal_graph(data);
+            graph(1, arr);
         });
 });
 ex_btn.addEventListener('click', (e) => {
@@ -89,9 +90,10 @@ ex_btn.addEventListener('click', (e) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            cal_graph(data);
-            graph(-1);
+            // console.log(data);
+            // console.log('ex');
+            arr = cal_graph(data);
+            graph(-1, arr);
         });
 });
 
@@ -101,9 +103,8 @@ fetch(`https://jumbocashapi.herokuapp.com/incometransactions?tyear=${yyyy}`, {
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
-        cal_graph(data);
-
-        graph(1);
+        // console.log(data);
+        arr = cal_graph(data);
+        graph(1, arr);
 
     });
