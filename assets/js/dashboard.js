@@ -1,6 +1,6 @@
 const logout = document.querySelector(".logout");
 logout.addEventListener("click", (e) => {
-    console.log(logout);
+    // console.log(logout);
     localStorage.removeItem("token");
 })
 
@@ -41,7 +41,6 @@ const display_profile = (data) => {
 }
 var tk = localStorage.getItem("token");
 
-console.log(JSON.parse(tk));
 var p = JSON.parse(tk);
 
 fetch("https://jumbocashapi.herokuapp.com/retailers/profile/", {
