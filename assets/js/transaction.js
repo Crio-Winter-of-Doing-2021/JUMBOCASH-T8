@@ -1,17 +1,16 @@
 var tk = localStorage.getItem("token");
 
-// console.log(JSON.parse(tk));
 var p = JSON.parse(tk);
 let i = 1;
 let income_save = document.getElementById('income-save');
 let income_update = document.getElementById('income-update');
 let expense_save = document.getElementById('expense-save');
 let expense_update = document.getElementById('expense-update');
-let pay_mode = ['h', 'Cash', 'Card', 'UPI', 'Others']
+let pay_mode = ['', 'Cash', 'Card', 'UPI', 'Others']
+
 const display_income = (data, f) => {
 
     if (f === 1) {
-        // console.log("o")
         entity_table.innerHTML = "";
         i = 1;
     }
@@ -464,39 +463,43 @@ entity_table.addEventListener('click', (e) => {
     let info_body = document.querySelector('#modal-body');
     let income_info = e.target.id == 'income_info';
     let expense_info = e.target.id == 'expense_info';
-    pty_mode = ['k', 'Cash', 'Card', 'UPI', 'Other Online Mode']
+    pty_mode = ['', 'Cash', 'Card', 'UPI', 'Other Online Mode']
         // console.log(income_info);
         // console.log(expense_info);
     const display_cust_info = (data) => {
         info_body.innerHTML = '',
-            info_body.innerHTML += `<div class="form-group row">
-     <label for="supplier-text-input" class="col-4 col-form-label ml-3">Name : ${data.firstname} ${data.lastname}</label>
-
- </div> 
- <div class="form-group row">
-                          
-                            <label for="supplier-text-input" class="col-8 col-form-label ml-3">Phone No. : ${data.mobile_no}</label>
-
-
-                        </div>`;
+            info_body.innerHTML += `
+        <div class="form-group row">
+            <label for="supplier-text-input" class="col-4 col-form-label ml-3">
+            Name : ${data.firstname} ${data.lastname}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label for="supplier-text-input" class="col-8 col-form-label ml-3">
+            Phone No. : ${data.mobile_no}
+            </label>
+        </div>
+        `;
     }
     const display_income_info = (data) => {
-        info_body.innerHTML += `<div class="form-group row">
-    <label for="supplier-text-input" class="col-4 col-form-label ml-3">Title : ${data.note}</label>
-
-
-
-</div>
-
-<div class="form-group row">
-    <label for="supplier-text-input" class="col-10 col-form-label ml-3">Payment Mode : ${pty_mode[data.payment_mode]}</label>
-
-</div>
-<div class="form-group row"> 
-    <label for="supplier-text-input" class="col-10 col-form-label ml-3">Description : ${data.description}</label>
-
-</div>
-`
+        info_body.innerHTML += `
+        <div class="form-group row">
+            <label for="supplier-text-input" class="col-4 col-form-label ml-3">
+            Title : ${data.note}
+            </label>
+        </div>
+        
+        <div class="form-group row">
+            <label for="supplier-text-input" class="col-10 col-form-label ml-3">
+            Payment Mode : ${pty_mode[data.payment_mode]}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label for="supplier-text-input" class="col-10 col-form-label ml-3">
+            Description : ${data.description}
+            </label>
+        </div>
+    `;
     }
 
     if (income_info) {
@@ -558,11 +561,10 @@ filter.addEventListener('click', (e) => {
     let end_date = document.getElementById('end-date').value;
     let filter_status = document.getElementById('filter_status').value;
     let filter_amt = document.getElementById('filter_amt').value;
-    // console.log(filter_status);
 
     if (end_date !== '') {
         let s = end_date.split('-');
-        var nd = parseInt(s[2]) + 1;
+        var nd = parseInt(s[2]);
         s[2] = nd.toString();
         end_date = s.join('-');
 
@@ -604,7 +606,6 @@ filter.addEventListener('click', (e) => {
 
     }
     if ((filter_trans == 2 || filter_status === '3') && filter_status !== '2') {
-        // console.log(filter_status)
         let fs = filter_status;
         if (filter_status === '3') {
             fs = 2;
@@ -640,7 +641,6 @@ filter.addEventListener('click', (e) => {
             });
     }
     if ((filter_trans == 3 || filter_status === '1') && filter_status !== '3' && filter_status !== '2' && filter_trans != 1 && filter_trans != 2) {
-        // console.log(filter_status)
         if (filter_mode === 'Payment Mode') {
             filter_mode = '';
         }
