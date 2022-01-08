@@ -1,10 +1,10 @@
-<p align="center"> <img align="center" alt="jumbotail" src="https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/blob/frontend/assets/img/JumbotailLogo.png" height='100' width='400'></p>
+<p align="center"> <img align="center" alt="jumbotail" src="https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/blob/frontend/src/assets/img/JumbotailLogo.png" height='100' width='400'></p>
 
 <br /><br />
 
 ## Jumbotail - Cash Flow Management App
 
-Cash Flow Management App is an application that enables small business owners to track all their credit and debit transactions in one place. The application have the provision to enter individual transactions for each entity (vendor, customer etc.). It is capable of pulling up historical transactions related to a particular entity or show the overall cash flow summary.
+Cash Flow Management App is an application that enables small business owners to track all their credit and debit transactions in one place. The application has the provision to enter individual transactions for each entity (vendor, customer etc.). It is capable of pulling up historical transactions related to a particular entity and shows the overall cash flow summary.
 
 ## Features
 
