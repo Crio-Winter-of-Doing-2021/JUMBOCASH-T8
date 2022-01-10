@@ -1,7 +1,7 @@
 <p align="center"> <img align="center" alt="jumbotail" src="https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/blob/frontend/src/assets/img/JumbotailLogo.png" height='100' width='400'></p>
 <br /><br />
 
-> Jumbotail is an online marketplace for food and grocery, targeted at kirana stores/wholesale distributors/vendors. These businesses buy from the Jumbotail marketplace for their retail sales. 
+> Jumbotail is an online marketplace for food and grocery, targeted at kirana stores/ wholesale distributors/ vendors .These businesses buy from the Jumbotail marketplace for their retail sales. 
 
 ## Jumbotail - Cash Flow Management App
 
@@ -16,10 +16,9 @@ Cash Flow Management App is an application that enables small business owners to
 5. Sort transactions according to different fields in ascending or descending order.
 6. View overall cashflow summary of current year through graph.
 7. View list of entities added.
-8. See reports on various transactional parameters for current year, current month and current week.
-9. Provide relevant insights based on the frequency of transactional - the total balance in and out, etc.
-10. Able to edit existing transactions and entities.
-11. Login/Sign Up.
+8. Provide relevant insights based on the frequency of transactional - the total balance in and out, etc.
+9. Able to edit existing transactions and entities.
+10. Login/Sign Up.
  
 ## Demo Video:
 
