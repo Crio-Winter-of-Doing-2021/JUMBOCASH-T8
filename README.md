@@ -74,7 +74,7 @@ Cash Flow Management App is an application that enables small business owners to
 
 ### Fork, clone locally & create a branch
 
-Fork [Blog Wall Backend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8) repository and clone at your local 
+Fork [Cash Flow Management App](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8) repository and clone at your local 
 
 - Fork and Clone the repo using
 ```
