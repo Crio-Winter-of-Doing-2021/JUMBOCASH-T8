@@ -3,7 +3,30 @@
 
 > Jumbotail is an online marketplace for food and grocery, targeted at kirana stores/ wholesale distributors/ vendors .These businesses buy from the Jumbotail marketplace for their retail sales. 
 
-## Jumbotail - Cash Flow Management App
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technology Stack to be used](#technology-stack-to-be-used)
+4. [GitHub Repository Structure](#github-repository-structure)
+5. [Getting Started](#getting-started)
+	1. [Fork, clone locally and create a branch](#fork-clone-locally--create-a-branch)
+	1. [Setting Environment First Time](#setting-environment-first-time)
+		1. [Basic Requirements](#basic-requirements)
+		1. [Creating Virtual Environment](#creating-virtual-environment)
+		1. [Installing Requirements](#installing-requirements)
+		1. [Migrating Database](#migrating-database)
+		1. [Create Superuser](#create-superuser)
+	1. [Starting Development Server](#starting-development-server)
+	1. [Leaving the virtual environment](#leaving-the-virtual-environment)
+	1. [Update requirements file](#update-requirements-file-critical)
+	1. [Update Database](#update-database)  
+6. [Team](#team)
+7. [Maintainers](#maintainers)
+
+## Introduction
+
+This is the backdoor REST API developed to add and manage historical transactions for [Cash Flow Management](https://jumbocashflow-app-t8.netlify.app/) website. 
 
 Cash Flow Management App is an application that enables small business owners to track all their credit and debit transactions in one place, along with viewing and organizing historical data to look for patterns that can help them improve their business processes. It is capable of monitoring their overall cash flow summary.
 
@@ -47,7 +70,11 @@ Cash Flow Management App is an application that enables small business owners to
 | 3. | [frontend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/tree/frontend) | contains all frontend code |
 
 
-### Backend Setup Instructions
+## Getting Started
+
+### Fork, clone locally & create a branch
+
+Fork [Blog Wall Backend](https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8) repository and clone at your local 
 
 - Fork and Clone the repo using
 ```
@@ -57,33 +84,122 @@ $ git clone https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8.git
 ```
 $ git checkout backend
 ```
-- Setup Virtual environment
+### Setting Environment First Time
+
+#### Basic Requirements 
+1. [Python](https://www.python.org/downloads/)
+1. [pip](https://pip.pypa.io/en/stable/installation/)
+
+#### Creating [Virtual Environment](https://docs.python.org/3/library/venv.html) 
+
+A virtual environment is a tool that helps keep dependencies required and the project isolated. If you wish to install a new library and write
 ```
-$ python3 -m venv jumbovenv
+pip install name_of_library
+``` 
+on the terminal without activating an environment, all the packages will be installed globally which is not a good practice if you’re working with different projects on your computer.
+
+If this sounds a bit complicated, don’t worry so much because a virtual environment is just a directory that will contain all the necessary files for our project to run.
+
+**Installing venv (required once)**
+
+**Windows**
 ```
-- Activate the virtual environment
+py -m pip install --user virtualenv
+py -m venv env
 ```
-$ source jumbovenv/bin/activate
+**Linux**
 ```
-- Install dependencies using
+python3 -m pip install --user virtualenv
+python3 -m venv env
 ```
-$ pip3 install -r requirements.txt
+
+You have to start virtual environment everytime you start new terminal -
+
+**Windows**
+
+Using gitbash
 ```
-- Make migrations using
+. env/Scripts/activate
 ```
-$ python3 manage.py makemigrations
+Using Powershell
 ```
-- Migrate Database
+. env\Scripts\activate
 ```
-$ python3 manage.py migrate
+**Linux**
 ```
-- Create a superuser
+source env/bin/activate
 ```
-$ python3 manage.py createsuperuser
+
+#### Installing Requirements 
+
+**Windows**
 ```
-- Run server using
+pip install -r requirements.txt
 ```
-$ python3 manage.py runserver
+**Linux**
+```
+pip3 install -r requirements.txt
+```
+
+#### Migrating Database
+**Windows**
+```
+py manage.py migrate
+```
+**Linux**
+```
+python3 manage.py migrate
+```
+
+#### Create Superuser
+**Windows**
+```
+py manage.py createsupeser
+```
+**Linux**
+```
+python3 manage.py createsupeser
+```
+
+### Starting Development Server
+**Windows**
+```
+py manage.py runserver
+```
+**Linux**
+```
+python3 manage.py runserver
+``` 
+
+### Leaving the virtual environment
+```
+deactivate
+```
+
+### Update requirements file (Critical)
+If you have installed new dependency, the pip freeze command lists the third-party packages and versions installed in the environment. 
+
+**Windows**
+```
+pip freeze > requirements.txt
+```
+**Linux**
+```
+pip3 freeze > requirements.txt
+```
+
+### Update Database  
+Everytime you change db models, you need to run makemigrations and migrate to update on database.
+
+**Windows**
+```
+py manage.py makemigrations
+py manage.py migrate
+```
+**Linux**
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
 ``` 
 
 
@@ -103,7 +219,7 @@ $ python3 manage.py runserver
 | 2. | Rudrakshi | Frontend Development| [@rudrakshi99](https://github.com/rudrakshi99)  |
 
 
-## Contributors ✨
+## Maintainers✨
 
 <table>
   <tbody><tr>
