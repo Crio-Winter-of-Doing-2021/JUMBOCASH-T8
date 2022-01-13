@@ -1,22 +1,25 @@
-<p align="center"> <img align="center" alt="jumbotail" src="https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/blob/frontend/assets/img/JumbotailLogo.png" height='100' width='400'></p>
-
+<p align="center"> <img align="center" alt="jumbotail" src="https://github.com/Crio-Winter-of-Doing-2021/JUMBOCASH-T8/blob/frontend/src/assets/img/JumbotailLogo.png" height='100' width='400'></p>
 <br /><br />
+
+> Jumbotail is an online marketplace for food and grocery, targeted at kirana stores/ wholesale distributors/ vendors .These businesses buy from the Jumbotail marketplace for their retail sales. 
 
 ## Jumbotail - Cash Flow Management App
 
-Cash Flow Management App is an application that enables small business owners to track all their credit and debit transactions in one place. The application have the provision to enter individual transactions for each entity (vendor, customer etc.). It is capable of pulling up historical transactions related to a particular entity or show the overall cash flow summary.
+Cash Flow Management App is an application that enables small business owners to track all their credit and debit transactions in one place, along with viewing and organizing historical data to look for patterns that can help them improve their business processes. It is capable of monitoring their overall cash flow summary.
 
 ## Features
 
-- Users (small business owners) log into the App on the Web UI. They will be authenticated at this step.
-
-- Users can add entities which could be customers/vendors.
-
-- Users can post transactions on the UI as and when they happen. Each transaction have the entity with which the transaction occurred.
-
-- Users can see a dashboard of all transactions with an overall cash flow summary.
-
-- Users can filter on a specific entity to see all of their transactions with that entity.
+1. Add entity (vendor, customer).
+2. Add individual transactions for each entity (vendor, customer).
+3. View historical transactions.
+4. Filter transactions based on its type, status, mode, entity type and between two dates.
+5. Sort transactions according to different fields in ascending or descending order.
+6. View overall cashflow summary of current year through graph.
+7. View list of entities added.
+8. Provide relevant insights based on the frequency of transactional - the total balance in and out, etc.
+9. Able to edit existing transactions and entities.
+10. Login/Sign Up.
+ 
 
 ## Technology Stack to be used:
 
