@@ -15,6 +15,8 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 from django.conf import settings
 
+from jumbocashapi.validators import validate_contact_number
+
 
 payment_mode_choices = (
     ('1', 'Cash'),
@@ -73,7 +75,7 @@ class RetailerManager(BaseUserManager):
 class Retailer(AbstractBaseUser, PermissionsMixin):
     """ Model for Retailer users """
     email           = models.EmailField(max_length=255, unique=True)
-    mobile_no       = models.CharField(max_length=10, blank=True)
+    mobile_no       = models.CharField(max_length=10, blank=True, validators=[validate_contact_number])
     firstname       = models.CharField(max_length=255)
     lastname        = models.CharField(max_length=255, blank=True)
     business_name   = models.CharField(max_length=255, blank=True)
@@ -101,7 +103,7 @@ class Customer(models.Model):
     """Model for customer enity (cash inflow entity)"""
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255, blank=True)
-    mobile_no   = models.CharField(max_length=10, blank=True)
+    mobile_no   = models.CharField(max_length=10, blank=True, validators=[validate_contact_number])
     email_id    = models.EmailField(max_length=255, blank=True)
     ret         = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -115,7 +117,7 @@ class Supplier(models.Model):
     """Model for customer enity (cash outflow entity)"""
     firstname   = models.CharField(max_length=255)
     lastname    = models.CharField(max_length=255, blank=True)
-    mobile_no   = models.CharField(max_length=10, blank=True)
+    mobile_no   = models.CharField(max_length=10, blank=True, validators=[validate_contact_number])
     email_id    = models.EmailField(max_length=255, blank=True)
     ret         = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
