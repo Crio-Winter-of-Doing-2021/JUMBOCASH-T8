@@ -13,11 +13,12 @@ from .permissions import (RetailerPermission, CustomerSupplierPermission, Income
 
 from .filters import IncomeTransactionFilter                         
 import requests
- 
+from .pagination import MyPageNumberPagination
+
 class RetailerListView(ListAPIView):
     """Handles List of a Retailer object"""
     serializer_class    = RetailerSerializer
-
+    pagination_class    = MyPageNumberPagination
 
     def get_queryset(self):
         """Returns only the object related to current user"""
@@ -43,6 +44,7 @@ class RetailerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
 class CustomerListCreateView(ListCreateAPIView):
     """Handles List and Create of a Customer object"""
     serializer_class    = CustomerSerializer
+    pagination_class    = MyPageNumberPagination
     filterset_fields     = ('id','firstname', 'lastname', 'mobile_no', 'email_id')
 
     def perform_create(self, serializer):
@@ -65,6 +67,7 @@ class CustomerUpdateRetriveDeleteView(RetrieveUpdateDestroyAPIView):
 class SupplierListCreateView(ListCreateAPIView):
     """Handles List and Create of a Supplier object"""
     serializer_class    = SupplierSerializer
+    pagination_class    = MyPageNumberPagination
     filterset_fields     = ('id','firstname', 'lastname', 'mobile_no', 'email_id')
 
     def perform_create(self, serializer):
@@ -87,6 +90,7 @@ class IncomeTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a IncomeTransaction object"""
     #queryset            = IncomeTransaction.objects.all()
     serializer_class    = IncomeTransactionSerializer
+    pagination_class    = MyPageNumberPagination
     filterset_fields    = ['id','trans_date_time', 'amount', 'note', \
                        'payment_mode', 'payment_status', 'due_date', 'cust_id', 'tdate', 'tmonth', 'tyear']
     filter_class        = IncomeTransactionFilter
@@ -121,6 +125,7 @@ class ExpenseTransactionListCreateView(ListCreateAPIView):
     """Handles List and Create of a ExpenseTransaction object"""
     #queryset            = ExpenseTransaction.objects.all()
     serializer_class    = ExpenseTransactionSerializer
+    pagination_class    = MyPageNumberPagination
     filterset_fields     = ['id','trans_date_time', 'amount', 'note', 'description', \
                           'payment_mode', 'payment_status', 'due_date', 'sup_id', 'tdate', 'tmonth', 'tyear']
 
