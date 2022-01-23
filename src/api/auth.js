@@ -4,7 +4,7 @@ export const login = (login_details, navigate, setError, setIsLoading) => {
   API.post("login/", login_details)
     .then((response) => {
       localStorage.setItem("token", response.data.token);
-      navigate("/");
+      navigate("/Main");
     })
     .catch((err) => {
       setIsLoading(true);
@@ -21,7 +21,7 @@ export const register = (
   API.post("register", register_details)
     .then((res) => {
       setIsLoading(true);
-      navigate("/Main");
+      navigate("/");
     })
     .catch((err) => {
       setIsLoading(true);
