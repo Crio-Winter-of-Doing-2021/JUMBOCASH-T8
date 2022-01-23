@@ -5,7 +5,7 @@ import {
   Box,
   makeStyles,
 } from "@material-ui/core";
-import logo from "../images/JumbotailLogo.png";
+import logo from "../../images/JumbotailLogo.png";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
